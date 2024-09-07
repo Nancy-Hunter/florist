@@ -9,6 +9,16 @@ const PostSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  price: {
+    type: Number,
+    require: true,
+  },
+  category: {
+    type: String,
+  }, 
+  bloom: {
+    type: Array,
+  },
   cloudinaryId: {
     type: String,
     require: true,
