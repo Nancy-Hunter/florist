@@ -4,8 +4,16 @@ const Post = require("../models/Post");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
+      const posts = await Post.find({ posts: req.user.id });
       res.render("profile.ejs", { posts: posts, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getCategory: async (req, res) => {
+    try {
+      const posts = await Post.find({posts: req.params.category}).sort({ createdAt: "desc" }).lean();
+      res.render("category.ejs", { posts: posts, category: req.params  });
     } catch (err) {
       console.log(err);
     }
@@ -19,7 +27,6 @@ module.exports = {
     }
   },
   getPost: async (req, res) => {
-    console.log(req)
     try {
       const post = await Post.findById(req.params.id);
       res.render("post.ejs", { post: post}); 
