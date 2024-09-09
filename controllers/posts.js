@@ -10,6 +10,15 @@ module.exports = {
       console.log(err);
     }
   },
+  getCategory: async (req, res) => {
+    try {
+      const posts = await Post.find({category : req.params.theme })
+      console.log(req.params.theme, posts)
+      res.render("category.ejs", { posts: posts });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
@@ -18,10 +27,35 @@ module.exports = {
       console.log(err);
     }
   },
+
+  // getProfile: async (req, res) => {
+  //   try {
+  //     const posts = await Post.find({ user: req.user.id });
+  //     res.render("profile.ejs", { posts: posts, user: req.user });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
+  // getFeed: async (req, res) => {
+  //   try {
+  //     const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+  //     res.render("feed.ejs", { posts: posts });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
+  // getPost: async (req, res) => {
+  //   try {
+  //     const post = await Post.findById(req.params.id);
+  //     res.render("post.ejs", { post: post, user: req.user });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      res.render("post.ejs", { post: post}); 
     } catch (err) {
       console.log(err);
     }
@@ -41,8 +75,7 @@ module.exports = {
         bloom: req.body.bloom,
         category: req.body.category,
         user: req.user.id,
-      });
-      console.log(req.body)
+      })
       console.log("Post has been added!");
       res.redirect("/profile");
     } catch (err) {
