@@ -27,31 +27,6 @@ module.exports = {
       console.log(err);
     }
   },
-
-  // getProfile: async (req, res) => {
-  //   try {
-  //     const posts = await Post.find({ user: req.user.id });
-  //     res.render("profile.ejs", { posts: posts, user: req.user });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
-  // getFeed: async (req, res) => {
-  //   try {
-  //     const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-  //     res.render("feed.ejs", { posts: posts });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
-  // getPost: async (req, res) => {
-  //   try {
-  //     const post = await Post.findById(req.params.id);
-  //     res.render("post.ejs", { post: post, user: req.user });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
@@ -73,6 +48,9 @@ module.exports = {
         likes: 0,
         price: req.body.price,
         bloom: req.body.bloom,
+        available: true,
+        onSale: (req.body.onSale == 'true')? true : false,
+        discount: req.body.discount,
         category: req.body.category,
         user: req.user.id,
       })
@@ -82,15 +60,13 @@ module.exports = {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
+  onSale: async (req, res) => {
     try {
-      await Post.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
-      console.log("Likes +1");
+      await Post.findOneAndUpdate({ _id: req.params.id }, 
+        [
+          { $set:{ onSale: {$not: "$onSale"} } } //switches boolean?
+        ]);
+      console.log("item sale status changed!");
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);
