@@ -44,9 +44,11 @@
                   <input type="radio" name="onSale" value='true' > 
                   <label for="true">True</label>
                 </div>
-                <label for="discount" class="form-label">Discount</label>
-                <input type = "Double" class="form-control" id="discount" name="discount" default = 0 placeholder=0.00>
               </fieldset>
+              <div>
+                <label for="discount" class="form-label">Discount</label>
+                <input type = "Double" class="form-control" id="discount" name="discount" default = 0 placeholder='0.00'>
+              </div>
           
               <fieldset class="mb-3">
                 <legend>Add Flower Types</legend>
@@ -149,12 +151,7 @@
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
             
-              <form
-            action="/post/onSale/<%= posts[i].id %>?_method=PUT"
-            method="POST"
-            class="col-3">
-            <button class="btn btn-primary fa fa-long-arrow-down" type="submit">Sold</button>
-          </form>
+             
                     
           <!-- doesnt work-- to put things on sale -->
             <form

@@ -11,7 +11,7 @@ const PostSchema = new mongoose.Schema({
     require: true,
   },
   price: {
-    type: Double,
+    type: Number,
     require: true,
   },
   category: {
@@ -29,7 +29,7 @@ const PostSchema = new mongoose.Schema({
     required: true,
   },
   discount : {
-    type: Double,
+    type: Number,
     default:0,
   },
   cloudinaryId: {

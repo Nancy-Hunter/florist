@@ -15,3 +15,10 @@
             document.body.classList.toggle("grayscale");
           }
           grayscale() -->
+
+          <form
+          action="/post/onSale/<%= posts[i].id %>?_method=PUT"
+          method="POST"
+          class="col-3">
+          <button class="btn btn-primary fa fa-long-arrow-down" type="submit">Sold</button>
+        </form>
