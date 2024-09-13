@@ -67,7 +67,19 @@ module.exports = {
           { $set:{ onSale: {$not: "$onSale"} } } //switches boolean?
         ]);
       console.log("item sale status changed!");
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect(`/profile`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  soldOut: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate({ _id: req.params.id }, 
+        [
+          { $set:{ available: {$not: "$available"} } } //switches boolean?
+        ]);
+      console.log("item is available/soldout!");
+      res.redirect(`/profile`);
     } catch (err) {
       console.log(err);
     }

@@ -25,7 +25,8 @@ const PostSchema = new mongoose.Schema({
     default: true,
   },
   onSale : {
-    type: Boolean, 
+    type: Boolean,
+    default: false,
     required: true,
   },
   discount : {

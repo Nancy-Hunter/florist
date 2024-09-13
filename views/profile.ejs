@@ -150,10 +150,20 @@
             <a href="/post/<%= posts[i]._id%>">
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
-            
-             
+            <form
+          action="/post/onSale/<%= posts[i].id %>?_method=PUT"
+          method="POST"
+          class="col-3">
+          <button class="btn btn-primary fa fa-long-arrow-down" type="submit">on sale: <%=posts[i].onSale%></button>
+        </form>
+        <form
+        action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
+        method="POST"
+        class="col-3">
+        <button class="btn btn-primary fa fa-long-arrow-down" type="submit">available: <%=posts[i].available%></button>
+      </form>
                     
-          <!-- doesnt work-- to put things on sale -->
+          
             <form
             action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
             method="POST"
