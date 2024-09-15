@@ -1,0 +1,24 @@
+<!-- <div class="row justify-content-between">
+          <form
+            class="col-1"
+            action="/post/likePost/<%= post.id %>?_method=PUT"
+            method="POST"
+          >
+            <button class="btn btn-primary fa fa-heart" type="submit"></button>
+          </form>
+          <h3 class="col-3">Likes: <%= post.likes %></h3>
+        </div> -->
+        <!-- took out likes maybe i can modify it to an edit? -->
+
+        <!-- function grayscale() {
+            // Toggling the class "grayscale" on the body
+            document.body.classList.toggle("grayscale");
+          }
+          grayscale() -->
+
+          <form
+          action="/post/onSale/<%= posts[i].id %>?_method=PUT"
+          method="POST"
+          class="col-3">
+          <button class="btn btn-primary fa fa-long-arrow-down" type="submit">Sold</button>
+        </form>

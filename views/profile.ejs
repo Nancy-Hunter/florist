@@ -22,19 +22,34 @@
               </div>
               <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input type = "Number" class="form-control" id="price" name="price">
+                <input type = "Double" class="form-control" id="price" name="price">
               </div>
               <div class="mb-3">
                 <label for="category" class="form-label">Choose a Category:</label>
                 <select name="category" id="category">
-                  <option value="bestSellers">Best Sellers</option>
-                  <option value="sales">Sales</option>
+                  <option value="best Sellers">Best Sellers</option>
                   <option value="birthday">Birthday</option>
                   <option value="anniversary">Anniversary</option>
-                  <option value="getWell">Get Well</option>
+                  <option value="sympathy">Get Well/Sympathy</option>
                   <option value="congratulations">Congratulations</option>
                 </select>
               </div>
+              <fieldset class="mb-3">
+                <legend>Put Item on Sale?</legend>
+                <div>
+                  <input type="radio" name="onSale" value='false' checked> 
+                  <label for="false">False</label>
+                </div>
+                <div>
+                  <input type="radio" name="onSale" value='true' > 
+                  <label for="true">True</label>
+                </div>
+              </fieldset>
+              <div>
+                <label for="discount" class="form-label">Discount</label>
+                <input type = "Double" class="form-control" id="discount" name="discount" default = 0 placeholder='0.00'>
+              </div>
+          
               <fieldset class="mb-3">
                 <legend>Add Flower Types</legend>
                 <div>
@@ -135,7 +150,20 @@
             <a href="/post/<%= posts[i]._id%>">
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
-            
+            <form
+          action="/post/onSale/<%= posts[i].id %>?_method=PUT"
+          method="POST"
+          class="col-3">
+          <button class="btn btn-primary fa fa-long-arrow-down" type="submit">on sale: <%=posts[i].onSale%></button>
+        </form>
+        <form
+        action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
+        method="POST"
+        class="col-3">
+        <button class="btn btn-primary fa fa-long-arrow-down" type="submit">available: <%=posts[i].available%></button>
+      </form>
+                    
+          
             <form
             action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
             method="POST"
@@ -144,7 +172,7 @@
           </form>
           <!-- trash button moved from post.ejs -->
         </li>
-
+        
         <% } %>
         </ul>
         <div class="row justify-content-center mt-5">
@@ -155,3 +183,4 @@
   </div>
 </div>
 <%- include('partials/footer') -%>
+

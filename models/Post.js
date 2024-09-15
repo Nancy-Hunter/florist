@@ -1,3 +1,4 @@
+const { Double } = require("mongodb");
 const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
@@ -18,6 +19,19 @@ const PostSchema = new mongoose.Schema({
   }, 
   bloom: {
     type: Array,
+  },
+  available: {
+    type: Boolean, 
+    default: true,
+  },
+  onSale : {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
+  discount : {
+    type: Number,
+    default:0,
   },
   cloudinaryId: {
     type: String,
