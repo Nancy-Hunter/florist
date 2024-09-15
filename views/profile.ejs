@@ -156,6 +156,7 @@
           class="col-3">
           <button class="btn btn-primary fa fa-long-arrow-down" type="submit">on sale: <%=posts[i].onSale%></button>
         </form>
+        <!-- add on sale button -->
         <form
         action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
         method="POST"
