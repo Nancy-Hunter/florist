@@ -144,33 +144,33 @@
           </div>
       </div>
       <div class="col-6">
+        
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
+          <% if (i == 0 || posts[i].category != posts[i-1].category) { %>
+            <h2><%=posts[i].category[0].toUpperCase() + posts[i].category.slice(1) %> Flowers</h2>
+          <% } %>
           <li class="col-6 justify-content-between mt-5">
             <a href="/post/<%= posts[i]._id%>">
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
-            <form
-          action="/post/onSale/<%= posts[i].id %>?_method=PUT"
-          method="POST"
-          class="col-3">
-          <button class="btn btn-primary fa fa-long-arrow-down" type="submit">on sale: <%=posts[i].onSale%></button>
-        </form>
-        <form
-        action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
-        method="POST"
-        class="col-3">
-        <button class="btn btn-primary fa fa-long-arrow-down" type="submit">available: <%=posts[i].available%></button>
-      </form>
+          
+            <p><%=posts[i].title%></p>
+            <form action="/post/onSale/<%= posts[i].id %>?_method=PUT" method="POST" class="col-3">
+                  <button class="btn btn-primary fa fa-long-arrow-down" type="submit">on sale: <%=posts[i].onSale%></button>
+            </form>
+        <!-- add on sale button -->
+            <form action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
+             method="POST" class="col-3">
+                  <button class="btn btn-primary fa fa-long-arrow-down" type="submit">available: <%=posts[i].available%></button>
+            </form>
                     
           
-            <form
-            action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
-            method="POST"
-            class="col-3">
-            <button class="btn btn-primary fa fa-trash" type="submit"></button>
-          </form>
-          <!-- trash button moved from post.ejs -->
+            <form action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
+            method="POST" class="col-3">
+                <button class="btn btn-primary fa fa-trash" type="submit"></button>
+            </form>
+            <!-- trash button moved from post.ejs -->
         </li>
         
         <% } %>
