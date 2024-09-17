@@ -156,18 +156,25 @@
             </a>
           
             <p><%=posts[i].title%></p>
-            <form action="/post/onSale/<%= posts[i].id %>?_method=PUT" method="POST" class="col-3">
+            <form 
+            action="/post/onSale/<%= posts[i].id %>?_method=PUT" 
+            method="POST" 
+            class="col-3">
                   <button class="btn btn-primary fa fa-long-arrow-down" type="submit">on sale: <%=posts[i].onSale%></button>
             </form>
         <!-- add on sale button -->
-            <form action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
-             method="POST" class="col-3">
+            <form 
+            action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
+            method="POST" 
+            class="col-3">
                   <button class="btn btn-primary fa fa-long-arrow-down" type="submit">available: <%=posts[i].available%></button>
             </form>
                     
           
-            <form action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
-            method="POST" class="col-3">
+            <form 
+            action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
+            method="POST" 
+            class="col-3">
                 <button class="btn btn-primary fa fa-trash" type="submit"></button>
             </form>
             <!-- trash button moved from post.ejs -->

@@ -4,11 +4,7 @@ const Post = require("../models/Post");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      let ordering = {}, // map for efficient lookup of sortIndex
-          sortOrder = ['best Sellers','birthday','anniversary', 'sympathy', 'congratulations']
-      for (var i=0; i<sortOrder.length; i++)
-          ordering[sortOrder[i]] = i;
-      const posts = await Post.find().sort({category: 'asc'}).lean();
+      const posts = await Post.find().sort({category: 'asc'})
       res.render("profile.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
