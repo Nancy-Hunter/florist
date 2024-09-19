@@ -1,8 +1,8 @@
 body {
-    transition: filter 1s; /* Change "1s" to any time you'd like */
-  }
-  body.grayscale {
-    /* grayscale(1) makes the website grayscale */
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-  }
+  transition: filter 1s; /* Change "1s" to any time you'd like */
+}
+body.grayscale {
+  /* grayscale(1) makes the website grayscale */
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}

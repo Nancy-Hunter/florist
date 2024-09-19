@@ -1,4 +1,5 @@
 <%- include('partials/header') -%>
+
 <div class="container">
   <div class="row mt-5">
       <div class="col-6">
@@ -37,12 +38,12 @@
               <fieldset class="mb-3">
                 <legend>Put Item on Sale?</legend>
                 <div>
-                  <input type="radio" name="onSale" value='false' checked> 
-                  <label for="false">False</label>
+                  <input type="radio" name="onSale" id = "sale false" value='false' checked> 
+                  <label for="sale false">False</label>
                 </div>
                 <div>
-                  <input type="radio" name="onSale" value='true' > 
-                  <label for="true">True</label>
+                  <input type="radio" name="onSale" id = "sale true" value='true' > 
+                  <label for="sale true">True</label>
                 </div>
               </fieldset>
               <div>
@@ -53,83 +54,83 @@
               <fieldset class="mb-3">
                 <legend>Add Flower Types</legend>
                 <div>
-                  <input type="checkbox" name="bloom" value="carnations"> 
+                  <input type="checkbox" name="bloom" id ="Carnation" value="carnations"> 
                   <label for="Carnation">Carnation</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="mums"> 
+                  <input type="checkbox" name="bloom" id = "Chrysanthemum/Mums" value ="Chrysanthemum/Mums"> 
                   <label for="Chrysanthemum/Mums">Chrysanthemum/Mums</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="cosmos">
+                  <input type="checkbox" name="bloom" id = "Cosmos" value="cosmos">
                   <label for="Cosmos">Cosmos</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="daffodils"> 
+                  <input type="checkbox" name="bloom" id = "Daffodil" value="daffodils"> 
                   <label for="Daffodil">Daffodil</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="dahlias"> 
+                  <input type="checkbox" name="bloom" id = "Dahlia" value="dahlias"> 
                   <label for="Dahlia">Dahlia</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="daisies">  
+                  <input type="checkbox" name="bloom" id = "Daisy" value="daisies">  
                 <label for="Daisy">Daisy</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="delphiniums"> 
+                  <input type="checkbox" name="bloom" id = "Delphinium" value="delphiniums"> 
                 <label for="Delphinium">Delphinium</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="galdiolus"> 
+                  <input type="checkbox" name="bloom" id = "Galdiolus" value="galdiolus"> 
                   <label for="Galdiolus">Galdiolus</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="hydrangeas">  
+                  <input type="checkbox" name="bloom" id = "Hydrangea" value="hydrangeas">  
                   <label for="Hydrangea">Hydrangea</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="irises">  
+                  <input type="checkbox" name="bloom" id = "Iris" value="irises">  
                   <label for="Iris">Iris</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="jonquils">  
+                  <input type="checkbox" name="bloom" id = "Jonquil" value="jonquils">  
                   <label for="Jonquil">Jonquil</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="lilies"> 
+                  <input type="checkbox" name="bloom" id = "Lily" value="lilies"> 
                   <label for="Lily">Lily</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="orchids"> 
+                  <input type="checkbox" name="bloom" id = "Orchid" value="orchids"> 
                   <label for="Orchid">Orchid</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="peonies"> 
+                  <input type="checkbox" name="bloom" id = "Peony" value="peonies"> 
                   <label for="Peony">Peony</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="primrose"> 
+                  <input type="checkbox" name="bloom" id = "Primrose" value="primrose"> 
                   <label for="Primrose">Primrose</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="sunflowers"> 
+                  <input type="checkbox" name="bloom" id = "Sunflower" value="sunflowers"> 
                   <label for="Sunflower">Sunflower</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="sweet peas"> 
+                  <input type="checkbox" name="bloom" id = "Sweet Pea" value="sweet peas"> 
                   <label for="Sweet Pea">Sweet Pea</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="tulips"> 
+                  <input type="checkbox" name="bloom" id = "Tulip" value="tulips"> 
                   <label for="Tulip">Tulip</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="roses"> 
+                  <input type="checkbox" name="bloom" id = "Rose" value="roses"> 
                   <label for="Rose">Rose</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="bloom" value="violets">  
+                  <input type="checkbox" name="bloom" id = "Violet" value="violets">  
                   <label for="Violet">Violet</label>
                 </div>
           
@@ -137,7 +138,7 @@
               
               <div class="mb-3">
                 <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
+                <input type="file" class="form-control" id="imgUpload" name="file">
               </div>
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
             </form>
@@ -150,34 +151,44 @@
           <% if (i == 0 || posts[i].category != posts[i-1].category) { %>
             <h2><%=posts[i].category[0].toUpperCase() + posts[i].category.slice(1) %> Flowers</h2>
           <% } %>
-          <li class="col-6 justify-content-between mt-5">
+          <!-- Start of list item -->
+          <li class="col-6 mt-3" id ="<%= posts[i].id %>" >
             <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
+              <img class="card-img-top" src="<%= posts[i].image%>">
             </a>
-          
-            <p><%=posts[i].title%></p>
-            <form 
+            <!-- image and anchor -->
+             <div class="row">
+                <h6 class="col"><%=posts[i].title%></h6>
+                <!-- title -->
+                <form 
+                  action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
+                  method="POST" 
+                  class="col text-end">
+                    <button class="fa fa-trash" type="submit"></button>
+                </form>
+                <!-- trash button moved from post.ejs -->
+             </div>
+            
+            <div class="btn-group-sm">
+              <form 
             action="/post/onSale/<%= posts[i].id %>?_method=PUT" 
             method="POST" 
-            class="col-3">
-                  <button class="btn btn-primary fa fa-long-arrow-down" type="submit">on sale: <%=posts[i].onSale%></button>
-            </form>
-        <!-- add on sale button -->
+            class="">
+                  <button class="btn btn-outline-success btn-sm fa fa-long-arrow-down" type="submit">On Sale: <%=posts[i].onSale%></button>
+                  <span></span>
+            </form> 
+            <!-- add on sale button -->
             <form 
             action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
             method="POST" 
-            class="col-3">
-                  <button class="btn btn-primary fa fa-long-arrow-down" type="submit">available: <%=posts[i].available%></button>
+            class="">
+                  <button class="btn btn-outline-success btn-sm fa fa-long-arrow-down" type="submit">Available: <%=posts[i].available%></button>
             </form>
-                    
+            <!--sold out button  -->
           
-            <form 
-            action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
-            method="POST" 
-            class="col-3">
-                <button class="btn btn-primary fa fa-trash" type="submit"></button>
-            </form>
-            <!-- trash button moved from post.ejs -->
+            
+            </div>
+            
         </li>
         
         <% } %>
