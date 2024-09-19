@@ -7,25 +7,25 @@
           <div>
               <p><strong>User Name</strong>: <%= user.userName %></p>
               <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+              <a href="/logout" class="btn btn-primary">Logout</a>
           </div>
           
           <div class="mt-5">
             <h2>Add a post</h2>
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
+              <div class="mb-2">
                   <label for="title" class="form-label">Title</label>
                   <input type="text" class="form-control" id="title" name="title">
               </div>
-              <div class="mb-3">
+              <div class="mb-2">
                 <label for="caption" class="form-label">Caption</label>
                 <textarea class="form-control" id="caption" name="caption"></textarea>
               </div>
-              <div class="mb-3">
+              <div class="mb-2">
                 <label for="price" class="form-label">Price</label>
                 <input type = "Double" class="form-control" id="price" name="price">
               </div>
-              <div class="mb-3">
+              <div class="mb-2">
                 <label for="category" class="form-label">Choose a Category:</label>
                 <select name="category" id="category">
                   <option value="best Sellers">Best Sellers</option>
@@ -35,8 +35,8 @@
                   <option value="congratulations">Congratulations</option>
                 </select>
               </div>
-              <fieldset class="mb-3">
-                <legend>Put Item on Sale?</legend>
+              <fieldset class="mb-2">
+                <legend class="form-label">Put Item on Sale?</legend>
                 <div>
                   <input type="radio" name="onSale" id = "sale false" value='false' checked> 
                   <label for="sale false">False</label>
@@ -51,8 +51,8 @@
                 <input type = "Double" class="form-control" id="discount" name="discount" default = 0 placeholder='0.00'>
               </div>
           
-              <fieldset class="mb-3">
-                <legend>Add Flower Types</legend>
+              <fieldset class="my-2">
+                <legend class="form-label">Add Flower Types</legend>
                 <div>
                   <input type="checkbox" name="bloom" id ="Carnation" value="carnations"> 
                   <label for="Carnation">Carnation</label>
@@ -136,7 +136,7 @@
           
               </fieldset>
               
-              <div class="mb-3">
+              <div class="mb-2">
                 <label for="imgUpload" class="form-label">Image</label>
                 <input type="file" class="form-control" id="imgUpload" name="file">
               </div>
@@ -157,40 +157,40 @@
               <img class="card-img-top" src="<%= posts[i].image%>">
             </a>
             <!-- image and anchor -->
-             <div class="row">
-                <h6 class="col"><%=posts[i].title%></h6>
+             <div class="d-flex">
+                <h6 class=""><%=posts[i].title%></h6>
                 <!-- title -->
                 <form 
                   action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
                   method="POST" 
-                  class="col text-end">
+                  class="">
                     <button class="fa fa-trash" type="submit"></button>
                 </form>
                 <!-- trash button moved from post.ejs -->
              </div>
             
             <div class="btn-group-sm">
+               <form 
+              action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
+              method="POST" 
+              class="">
+                  <button class="btn btn-outline-success btn-sm fa" type="submit">Available: <%=posts[i].available%></button>
+              </form>
+              <!--sold out button  -->
+              <button class="btn btn-outline-success fa" id="changeDiscount">Change Discount: <%=posts[i].discount%></button>
               <form 
-            action="/post/onSale/<%= posts[i].id %>?_method=PUT" 
-            method="POST" 
-            class="">
-                  <button class="btn btn-outline-success btn-sm fa fa-long-arrow-down" type="submit">On Sale: <%=posts[i].onSale%></button>
-                  <span></span>
-            </form> 
-            <!-- add on sale button -->
-            <form 
-            action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
-            method="POST" 
-            class="">
-                  <button class="btn btn-outline-success btn-sm fa fa-long-arrow-down" type="submit">Available: <%=posts[i].available%></button>
-            </form>
-            <!--sold out button  -->
-          
-            
+              action="/post/onSale/<%= posts[i].id %>?_method=PUT" 
+              method="POST" 
+              class="hidden text-center"
+              id ="onSaleForm">
+                  <label for="onSale" class="form-label">Enter Discount:</label>
+                  <input type="Double" class="form-control" id="onSale">
+                  <button class="btn btn-success mt-1" type="submit">Update</button>
+              </form> 
+              <!-- add on sale button -->
+             
             </div>
-            
         </li>
-        
         <% } %>
         </ul>
         <div class="row justify-content-center mt-5">

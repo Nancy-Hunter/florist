@@ -66,7 +66,7 @@ module.exports = {
         { $set: { onSale: { $not: "$onSale" } } }, //switches boolean
       ]);
       console.log("item sale status changed!");
-      res.redirect(`/profile#req.params.id`);
+      res.redirect(`/profile`);
     } catch (err) {
       console.log(err);
     }
