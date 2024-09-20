@@ -4,7 +4,7 @@ const Post = require("../models/Post");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
+      const posts = await Post.find().sort({category: 'asc'})
       res.render("profile.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
@@ -64,8 +64,8 @@ module.exports = {
     try {
       await Post.findOneAndUpdate({ _id: req.params.id }, 
         [
-          { $set:{ onSale: {$not: "$onSale"} } } //switches boolean?
-        ]);
+          { $set:{ onSale: {$not: "$onSale"} } } //switches boolean
+        ])
       console.log("item sale status changed!");
       res.redirect(`/profile`);
     } catch (err) {
@@ -76,8 +76,8 @@ module.exports = {
     try {
       await Post.findOneAndUpdate({ _id: req.params.id }, 
         [
-          { $set:{ available: {$not: "$available"} } } //switches boolean?
-        ]);
+          { $set:{ available: {$not: "$available"} } } //switches boolean
+        ])
       console.log("item is available/soldout!");
       res.redirect(`/profile`);
     } catch (err) {
