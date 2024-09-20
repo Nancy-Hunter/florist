@@ -63,9 +63,13 @@ module.exports = {
   onSale: async (req, res) => {
     try {
       await Post.findOneAndUpdate({ _id: req.params.id }, [
-        { $set: { onSale: { $not: "$onSale" } } }, //switches boolean
+        { $set: { discount: req.body.discountUpdate } }, 
       ]);
+      
+        
       console.log("item sale status changed!");
+      
+    
       res.redirect(`/profile`);
     } catch (err) {
       console.log(err);

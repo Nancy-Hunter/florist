@@ -9,3 +9,6 @@ body.grayscale {
 .hidden{
 	display: none;
 }
+.yellow {
+  background-color: yellow;
+}
