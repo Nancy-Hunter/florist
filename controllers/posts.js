@@ -4,7 +4,7 @@ const Post = require("../models/Post");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find().sort({category: 'asc'})
+      const posts = await Post.find().sort({ category: "asc" });
       res.render("profile.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
@@ -12,8 +12,8 @@ module.exports = {
   },
   getCategory: async (req, res) => {
     try {
-      const posts = await Post.find({category : req.params.theme })
-      console.log(req.params.theme, posts)
+      const posts = await Post.find({ category: req.params.theme });
+      console.log(req.params.theme, posts);
       res.render("category.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
@@ -30,7 +30,7 @@ module.exports = {
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post}); 
+      res.render("post.ejs", { post: post });
     } catch (err) {
       console.log(err);
     }
@@ -49,11 +49,11 @@ module.exports = {
         price: req.body.price,
         bloom: req.body.bloom,
         available: true,
-        onSale: (req.body.onSale == 'true')? true : false,
+        onSale: req.body.onSale == "true" ? true : false,
         discount: req.body.discount,
         category: req.body.category,
         user: req.user.id,
-      })
+      });
       console.log("Post has been added!");
       res.redirect("/profile");
     } catch (err) {
@@ -62,11 +62,14 @@ module.exports = {
   },
   onSale: async (req, res) => {
     try {
-      await Post.findOneAndUpdate({ _id: req.params.id }, 
-        [
-          { $set:{ onSale: {$not: "$onSale"} } } //switches boolean
-        ])
+      await Post.findOneAndUpdate({ _id: req.params.id }, [
+        { $set: { discount: req.body.discountUpdate } }, 
+      ]);
+      
+        
       console.log("item sale status changed!");
+      
+    
       res.redirect(`/profile`);
     } catch (err) {
       console.log(err);
@@ -74,10 +77,9 @@ module.exports = {
   },
   soldOut: async (req, res) => {
     try {
-      await Post.findOneAndUpdate({ _id: req.params.id }, 
-        [
-          { $set:{ available: {$not: "$available"} } } //switches boolean
-        ])
+      await Post.findOneAndUpdate({ _id: req.params.id }, [
+        { $set: { available: { $not: "$available" } } }, //switches boolean
+      ]);
       console.log("item is available/soldout!");
       res.redirect(`/profile`);
     } catch (err) {

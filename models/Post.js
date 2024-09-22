@@ -16,22 +16,22 @@ const PostSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-  }, 
+  },
   bloom: {
     type: Array,
   },
   available: {
-    type: Boolean, 
+    type: Boolean,
     default: true,
   },
-  onSale : {
+  onSale: {
     type: Boolean,
     default: false,
     required: true,
   },
-  discount : {
+  discount: {
     type: Number,
-    default:0,
+    default: 0,
   },
   cloudinaryId: {
     type: String,
