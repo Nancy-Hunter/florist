@@ -6,18 +6,7 @@
     <title>Larkspur and Lilies</title>
 </head>
 <body>
-    <header>15% off all orders today!</header>
-    <header>
-        <h1>Larkspur and Lilies</h1>
-        <nav>
-            <ul>Birthday Flowers</ul>
-            <ul>Anniversary</ul>
-            <ul>Best Sellers</ul>
-            <ul>Get Well Bouquets </ul>
-            <ul>Congratulations</ul>
-        </nav>
-    </header>
-
+    <%- include('partials/header') -%>
     <div>
         <h3>Flower of the day!</h3>
         <img src="/public/imgs/flowers.jpg" alt="">
@@ -25,26 +14,32 @@
     <main>
     <div>
         <h2>Birthday Flowers</h2>
+<<<<<<< HEAD
         <a href=""></a>
+=======
+        <a href="/flowersFor/birthday">Birthday</a>
+>>>>>>> main
     </div>
     <div>
         <h2>Anniversay Flowers</h2>
+        <a href="/flowersFor/anniversary">Anniversary</a>
     </div>
 
     <div>
         <h2>Best Sellers</h2>
+        <a href="/flowersFor/best%20Sellers">Best Sellers</a>
     </div>
 
     <div>
         <h2>Get Well Bouquets</h2>
+        <a href="/flowersFor/sympathy">Sympathy</a>
     </div>
 
     <div>
         <h2>Congratulations Gift</h2>
+        <a href="/flowersFor/congratulations">Congratulations</a>
     </div>
     </main>
-<footer>
-    <h6>Larkspur and Lilies</h6>
-</footer>
+<%- include('partials/footer') -%>
 </body>
 </html>

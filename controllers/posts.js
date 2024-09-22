@@ -62,15 +62,13 @@ module.exports = {
   },
   onSale: async (req, res) => {
     try {
-      await Post.findOneAndUpdate({ _id: req.params.id }, [
-        { $set: { discount: req.body.discountUpdate } }, 
-      ]);
-      
-        
-      console.log("item sale status changed!");
-      
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        { $set: { discount: req.body.discountUpdate } 
+      })
     
-      res.redirect(`/profile`);
+      console.log("item sale status changed!");
+      res.redirect(`/profile#${req.params.id}`);
     } catch (err) {
       console.log(err);
     }

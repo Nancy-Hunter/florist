@@ -1,4 +1,4 @@
-const changeDiscountButton = document.getElementById("changeDiscountButton")
+const changeDiscountButton = document.querySelector("#changeDiscountButton")
 changeDiscountButton.addEventListener('click', toggleDisplay)
 
 function toggleDisplay() {
