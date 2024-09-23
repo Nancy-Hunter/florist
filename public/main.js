@@ -1,8 +1,30 @@
-const changeDiscountButton = document.getElementById("changeDiscountButton")
-changeDiscountButton.addEventListener('click', toggleDisplay)
 
-function toggleDisplay() {
-    document.getElementById("onSaleForm").classList.toggle('hidden')  
+const openFormButton = document.querySelectorAll(".changeDiscountButton")
+
+openFormButton.forEach(function(el){
+    el.addEventListener('click', toggleDisplay)
+})
+
+
+function toggleDisplay(event) {
+    const clicked = event.target
+    if (clicked.matches('button')) {
+    clicked.nextElementSibling.classList.toggle('hidden');
+  }
 }
 
-
+// // Bind click event to document
+// document.addEventListener('click', handleClick);
+// // Event handler passes Event Object by default
+// function handleClick(event) {
+//   // Reference the tag the user clicked
+//   const clicked = event.target;
+//   // If the user clicked a <button>
+//   if (clicked.matches('button')) {
+//     /*
+//     Find the element that proceeds the clicked <button> and toggle 
+//     .show class on it.
+//     */
+//     clicked.nextElementSibling.classList.toggle('show');
+//   }
+// }

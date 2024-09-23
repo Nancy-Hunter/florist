@@ -9,7 +9,7 @@
               <p><strong>Email</strong>: <%= user.email %></p>
               <a href="/logout" class="btn btn-primary">Logout</a>
           </div>
-
+          <h1 id = 'test'>TEST</h1>
           <div class="mt-5">
             <h2>Add a post</h2>
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
@@ -38,21 +38,18 @@
               <fieldset class="mb-2">
                 <legend class="form-label">Put Item on Sale?</legend>
                 <div>
-
                   <input type="radio" name="onSale" id = "sale false" value='false' checked> 
                   <label for="sale false">False</label>
                 </div>
                 <div>
                   <input type="radio" name="onSale" id = "sale true" value='true' > 
                   <label for="sale true">True</label>
-
                 </div>
               </fieldset>
               <div>
                 <label for="discount" class="form-label">Discount</label>
                 <input type = "number" class="form-control" id="discount" name="discount" default = 0 placeholder='0.00'>
               </div>
-
           
               <fieldset class="my-2">
                 <legend class="form-label">Add Flower Types</legend>
@@ -62,7 +59,6 @@
                 </div>
                 <div>
                   <input type="checkbox" name="bloom" id = "Chrysanthemum/Mums" value ="Chrysanthemum/Mums"> 
-
                   <label for="Chrysanthemum/Mums">Chrysanthemum/Mums</label>
                 </div>
                 <div>
@@ -70,7 +66,6 @@
                   <label for="Cosmos">Cosmos</label>
                 </div>
                 <div>
-
                   <input type="checkbox" name="bloom" id = "Daffodil" value="daffodils"> 
                   <label for="Daffodil">Daffodil</label>
                 </div>
@@ -161,16 +156,15 @@
             <a href="/post/<%= posts[i]._id%>">
               <img class="card-img-top" src="<%= posts[i].image%>">
             </a>
-
             <!-- image and anchor -->
-             <div class="d-flex">
+             <div class="d-flex justify-content-between">
                 <h6 class=""><%=posts[i].title%></h6>
                 <!-- title -->
                 <form 
                   action="/post/deletePost/<%= posts[i].id %>?_method=DELETE"
                   method="POST" 
                   class="">
-                    <button class="fa fa-trash text-end" type="submit"></button>
+                    <button class="fa fa-trash" type="submit"></button>
                 </form>
                 <!-- trash button moved from post.ejs -->
              </div>
@@ -183,12 +177,13 @@
                   <button class="btn btn-outline-success btn-sm fa" id= 'availableButton' type="submit">Available: <%=posts[i].available%></button>
               </form>
               <!--available button  -->
-              <button class="btn btn-outline-success fa" id="changeDiscountButton">Change Discount: <%=posts[i].discount%></button>
+              <button class="btn btn-outline-success fa changeDiscountButton"  type="button">Change Discount: <%=posts[i].discount%></button>
               <!-- discount dropdown toggle button -->
               <form 
               action="/post/onSale/<%= posts[i].id %>?_method=PUT" 
               method="POST" 
               class="hidden text-center"
+              name ="onSaleForm"
               id ="onSaleForm">
                   <label for="discountUpdate" class="form-label">Enter Discount:</label>
                   <input type="number" class="form-control" id="discountUpdate" name="discountUpdate">
