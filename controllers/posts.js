@@ -64,19 +64,12 @@ module.exports = {
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
-        { $set: { discount: req.body.discountUpdate } 
+        { $set: { discount: req.body.discountUpdate,
+                  onSale: {
+                    $cond: { if: { $lte: [ "$discount", 0 ] }, then: false, else: true }
+                  }
+                } 
       })
-      if ( await req.body.discountUpdate>0) {
-        Post.findOneAndUpdate(
-           { _id: req.params.id },
-           { $set: { onSale: true } 
-         })
-       } else {
-       await Post.findOneAndUpdate(
-           { _id: req.params.id },
-           { $set: { onSale: false } 
-         })
-       }
       console.log("item sale status changed!");
       res.redirect(`/profile#${req.params.id}`);
     } catch (err) {
