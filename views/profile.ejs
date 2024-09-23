@@ -177,12 +177,13 @@
                   <button class="btn btn-outline-success btn-sm fa" id= 'availableButton' type="submit">Available: <%=posts[i].available%></button>
               </form>
               <!--available button  -->
-              <button class="btn btn-outline-success fa" id="changeDiscountButton">Change Discount: <%=posts[i].discount%></button>
+              <button class="btn btn-outline-success fa" name="changeDiscountButton" id="changeDiscountButton">Change Discount: <%=posts[i].discount%></button>
               <!-- discount dropdown toggle button -->
               <form 
               action="/post/onSale/<%= posts[i].id %>?_method=PUT" 
               method="POST" 
               class="hidden text-center"
+              name ="onSaleForm"
               id ="onSaleForm">
                   <label for="discountUpdate" class="form-label">Enter Discount:</label>
                   <input type="number" class="form-control" id="discountUpdate" name="discountUpdate">
