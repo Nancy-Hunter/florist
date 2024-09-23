@@ -74,7 +74,7 @@ module.exports = {
        } else {
        await Post.findOneAndUpdate(
            { _id: req.params.id },
-           { $set: { onsale: false } 
+           { $set: { onSale: false } 
          })
        }
       console.log("item sale status changed!");
