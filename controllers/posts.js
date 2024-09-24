@@ -62,12 +62,13 @@ module.exports = {
   },
   onSale: async (req, res) => {
     try {
+      let onSaleFlag = req.body.discountUpdate>0
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         [{ $set: { 
-                  discount: req.body.discountUpdate,
-                  onSale:  { $gt : ['$discount', 0 ] } //DOESNT WORK
-                 } 
+            discount: { $toDouble: req.body.discountUpdate},
+            onSale: onSaleFlag
+            } 
         }]
       )
       console.log("item sale status changed!");
@@ -82,7 +83,7 @@ module.exports = {
         { $set: { available: { $not: "$available" } } }, //switches boolean
       ]);
       console.log("item is available/soldout!");
-      res.redirect(`/profile`);
+      res.redirect(`/profile#${req.params.id}`);
     } catch (err) {
       console.log(err);
     }

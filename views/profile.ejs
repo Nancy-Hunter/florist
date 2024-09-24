@@ -173,7 +173,7 @@
               action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
               method="POST" 
               class="">
-                  <button class="btn btn-outline-success btn-sm fa" id= 'availableButton' type="submit">Available: <%=posts[i].available%></button>
+                  <button class="<%= posts[i].available === true ? 'btn btn-outline-success btn-sm fa' : 'btn btn-outline-danger btn-sm fa' %> " id= 'availableButton' type="submit">Available: <%=posts[i].available%></button>
               </form>
               <!--available button  -->
               <button 
