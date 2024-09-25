@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row mt-5">
       <div class="col-6">
-        <h1>Admin Page</h1>
+        <h1 class="display-6">Admin Page</h1>
           <div>
               <p><strong>User Name</strong>: <%= user.userName %></p>
               <p><strong>Email</strong>: <%= user.email %></p>
@@ -148,7 +148,7 @@
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
           <% if (i == 0 || posts[i].category != posts[i-1].category) { %>
-            <h2><%=posts[i].category[0].toUpperCase() + posts[i].category.slice(1) %> Flowers</h2>
+            <h2 class="display-6"><%=posts[i].category[0].toUpperCase() + posts[i].category.slice(1) %> Flowers</h2>
           <% } %>
           <!-- Start of list item -->
           <li class="col-6 mt-3" id ="<%= posts[i].id %>" >
