@@ -62,21 +62,15 @@ module.exports = {
   },
   onSale: async (req, res) => {
     try {
+      let onSaleFlag = req.body.discountUpdate>0
       await Post.findOneAndUpdate(
         { _id: req.params.id },
-        { $set: { discount: req.body.discountUpdate } 
-      })
-      if ( await req.body.discountUpdate>0) {
-        Post.findOneAndUpdate(
-           { _id: req.params.id },
-           { $set: { onSale: true } 
-         })
-       } else {
-       await Post.findOneAndUpdate(
-           { _id: req.params.id },
-           { $set: { onsale: false } 
-         })
-       }
+        [{ $set: { 
+            discount: { $toDouble: req.body.discountUpdate},
+            onSale: onSaleFlag
+            } 
+        }]
+      )
       console.log("item sale status changed!");
       res.redirect(`/profile#${req.params.id}`);
     } catch (err) {
@@ -89,7 +83,7 @@ module.exports = {
         { $set: { available: { $not: "$available" } } }, //switches boolean
       ]);
       console.log("item is available/soldout!");
-      res.redirect(`/profile`);
+      res.redirect(`/profile#${req.params.id}`);
     } catch (err) {
       console.log(err);
     }

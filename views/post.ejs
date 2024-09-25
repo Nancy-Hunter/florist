@@ -13,10 +13,10 @@
       <% if(post.bloom.length>0) { %>
         <p>Includes: <%= post.bloom %> </p>
       <% } %>
+      <button class="btn btn-outline-success name="<%= post._id %>">Add to Cart</button>
     </div>
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+    <div class="col-6 my-5">
+      <a class="btn btn-outline-success" href="/feed">Keep smelling the Flowers</a>
     </div>
   </div>
 

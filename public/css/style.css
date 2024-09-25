@@ -1,5 +1,6 @@
 body {
   transition: filter 1s; /* Change "1s" to any time you'd like */
+  background-color: #d7e2de;
 }
 body.grayscale {
   /* grayscale(1) makes the website grayscale */
@@ -9,6 +10,12 @@ body.grayscale {
 .hidden{
 	display: none;
 }
-.yellow {
-  background-color: yellow;
+.nav-background {
+  background-color: #8cc9ab;
+}
+.link-hover:hover {
+  color: #802d39;
+}
+.header-title, .brown, li{
+  color: #6f5e4f;
 }

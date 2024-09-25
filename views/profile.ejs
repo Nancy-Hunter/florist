@@ -3,13 +3,12 @@
 <div class="container">
   <div class="row mt-5">
       <div class="col-6">
-        <h1>Admin Page</h1>
+        <h1 class="display-6">Admin Page</h1>
           <div>
               <p><strong>User Name</strong>: <%= user.userName %></p>
               <p><strong>Email</strong>: <%= user.email %></p>
               <a href="/logout" class="btn btn-primary">Logout</a>
           </div>
-          <h1 id = 'test'>TEST</h1>
           <div class="mt-5">
             <h2>Add a post</h2>
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
@@ -149,7 +148,7 @@
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
           <% if (i == 0 || posts[i].category != posts[i-1].category) { %>
-            <h2><%=posts[i].category[0].toUpperCase() + posts[i].category.slice(1) %> Flowers</h2>
+            <h2 class="display-6"><%=posts[i].category[0].toUpperCase() + posts[i].category.slice(1) %> Flowers</h2>
           <% } %>
           <!-- Start of list item -->
           <li class="col-6 mt-3" id ="<%= posts[i].id %>" >
@@ -174,10 +173,14 @@
               action="/post/soldOut/<%= posts[i].id %>?_method=PUT"
               method="POST" 
               class="">
-                  <button class="btn btn-outline-success btn-sm fa" id= 'availableButton' type="submit">Available: <%=posts[i].available%></button>
+                  <button class="<%= posts[i].available === true ? 'btn btn-outline-success btn-sm fa' : 'btn btn-outline-danger btn-sm fa' %> " id= 'availableButton' type="submit">Available: <%=posts[i].available%></button>
               </form>
               <!--available button  -->
-              <button class="btn btn-outline-success fa changeDiscountButton"  type="button">Change Discount: <%=posts[i].discount%></button>
+              <button 
+              class="<%= posts[i].onSale === true ? 'btn btn-outline-warning btn-sm fa changeDiscountButton' : 'btn btn-outline-success btn-sm fa changeDiscountButton' %> "
+              type="button">
+                Change Discount: <%=posts[i].discount%>
+              </button>
               <!-- discount dropdown toggle button -->
               <form 
               action="/post/onSale/<%= posts[i].id %>?_method=PUT" 
