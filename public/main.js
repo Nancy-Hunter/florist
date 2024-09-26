@@ -13,6 +13,12 @@ function toggleDisplay(event) {
   }
 }
 
+const image = document.querySelectorAll(img)
+
+image.addEventListener('click', () =>{
+  window.location.href
+})
+
 // // Bind click event to document
 // document.addEventListener('click', handleClick);
 // // Event handler passes Event Object by default
@@ -22,7 +28,7 @@ function toggleDisplay(event) {
 //   // If the user clicked a <button>
 //   if (clicked.matches('button')) {
 //     /*
-//     Find the element that proceeds the clicked <button> and toggle 
+//     Find the element that proceeds the clicked <button> and toggle
 //     .show class on it.
 //     */
 //     clicked.nextElementSibling.classList.toggle('show');
