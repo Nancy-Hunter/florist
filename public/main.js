@@ -13,11 +13,20 @@ function toggleDisplay(event) {
   }
 }
 
-const image = document.querySelectorAll(img)
+const sympathy_image_link = document.querySelector(".sympathy_image_class")
+const Best_Seller_Link = document.querySelector(".Best_Seller_image_class")
+const anniversary_image_link = document.querySelector(".anniversary_image_class")
+const birthday_image_link = document.querySelector(".birthday_image_class")
+const congratulations_link = document.querySelector(".congratulations_images_class")
+
+
 
 image.addEventListener('click', () =>{
-  window.location.href
+  window.location.href = '/flowersFor/sympathy'
 })
+
+//make a object
+
 
 // // Bind click event to document
 // document.addEventListener('click', handleClick);
