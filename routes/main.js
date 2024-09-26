@@ -9,5 +9,6 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 router.get("/", homeController.getIndex);
 router.get("/flowersFor/:theme", postsController.getCategory);
 router.get("/feed", postsController.getFeed);
+router.get("/cart", postsController.getCart);
 
 module.exports = router;
