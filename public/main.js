@@ -12,7 +12,7 @@ function toggleDisplay(event) {
   }
 }
 
-//set up for add to cart
+//set up for add to cart at post and cart
 let count = 0;
 let sum = 0;
 let cart = {};
@@ -29,7 +29,7 @@ if (localStorage.getItem("cart")) {
     cart = JSON.parse(localStorage.getItem("cart"));
 }
 
-//updateCart()
+//updateCart at post
 
 const addToCartButton = document.querySelectorAll(".cartButton")
 

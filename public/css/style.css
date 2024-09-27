@@ -17,5 +17,6 @@ body.grayscale {
   color: #802d39;
 }
 .header-title, .brown, li{
+  text-decoration: none;
   color: #6f5e4f;
 }
