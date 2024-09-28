@@ -21,10 +21,25 @@ const congratulations_link = document.querySelector(".congratulations_images_cla
 
 
 
-image.addEventListener('click', () =>{
+sympathy_image_link.addEventListener('click', () =>{
   window.location.href = '/flowersFor/sympathy'
 })
 
+Best_Seller_Link.addEventListener('click',() =>{
+  window.location.href = '/flowersFor/best%20Sellers'
+})
+
+anniversary_image_link.addEventListener('click',() =>{
+  window.location.href = '/flowersFor/anniversary'
+})
+
+birthday_image_link.addEventListener('click',() =>{
+  window.location.href = '/flowersFor/birthday'
+})
+
+congratulations_link.addEventListener('click',() =>{
+  window.location.href ='/flowersFor/congratulations'
+})
 //make a object
 
 
