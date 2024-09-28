@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<div class="container">
+<div class="container lead">
 
   <div class="row justify-content-center mt-5">
     <div class="col-6 text-center d-flex flex-column">
@@ -8,19 +8,19 @@
       <a class="btn btn-outline-success my-4" href="/flowersFor/<%= post.category %>">Keep smelling the Flowers</a>
     </div>
 
-    <div class="col-4 mt-5 brown">
-      <p class="lead"><%= post.caption %></p>
+    <div class="col-4 mt-5 brown mb-3">
+      <p class=""><%= post.caption %></p>
       <% if (post.onSale==true) { %>
-        <p class="ps-3"><s>$<%= Number.parseFloat(post.price).toFixed(2) %></s></p> 
-        <p class="ps-3 text-success">On Sale $<%= Number.parseFloat(post.price - post.discount).toFixed(2) %></p>                   
+        <p class=""><s>$<%= Number.parseFloat(post.price).toFixed(2) %></s></p> 
+        <p class="text-success">On Sale $<%= Number.parseFloat(post.price - post.discount).toFixed(2) %></p>                   
       <% } else { %>
-        <p class="ps-3">$<%= Number.parseFloat(post.price).toFixed(2) %></p> 
+        <p class="">$<%= Number.parseFloat(post.price).toFixed(2) %></p> 
       <% } %>
       <% if(post.bloom.length>0) { %>
         <p>Includes: <%= post.bloom %> </p>
       <% } %>
       <button class="btn btn-outline-success cartButton add-to-cart" data-id="<%= post._id %>" data-img="<%= post.image %>" data-price="<%= Number.parseFloat(post.price - post.discount).toFixed(2) %>" data-title="<%= post.title %>">Add to Cart</button>
-      <a href= "/cart" class="btn btn-outline-success mt-1 mb-3">Checkout</a>
+      <a href= "/cart" class="btn btn-outline-success">Checkout</a>
     </div>
   </div>
   
