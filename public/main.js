@@ -13,6 +13,8 @@ function toggleDisplay(event) {
   }
 }
 
+/////Main Page Image Event Listeners
+
 const sympathy_image_link = document.querySelector(".sympathy_image_class")
 const Best_Seller_Link = document.querySelector(".Best_Seller_image_class")
 const anniversary_image_link = document.querySelector(".anniversary_image_class")
@@ -40,3 +42,5 @@ birthday_image_link.addEventListener('click',() =>{
 congratulations_link.addEventListener('click',() =>{
   window.location.href ='/flowersFor/congratulations'
 })
+
+//////////////////

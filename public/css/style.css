@@ -7,8 +7,8 @@ body.grayscale {
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
-.hidden{
-	display: none;
+.hidden {
+  display: none;
 }
 .nav-background {
   background-color: #8cc9ab;
@@ -16,6 +16,8 @@ body.grayscale {
 .link-hover:hover {
   color: #802d39;
 }
-.header-title, .brown, li{
+.header-title,
+.brown,
+li {
   color: #6f5e4f;
 }
