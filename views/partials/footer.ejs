@@ -1,19 +1,32 @@
   
     <footer>
-        <nav class="navbar navbar-light nav-background py-3 brown">
-            <div class="container">
-                <p class="display-6">Larkspur and Lilies</p>
-                <p>Your one stop shop for all your flower needs</p>
+        <nav class="navbar navbar-expand-md navbar-light nav-background py-3 brown">
+            <div class="d-flex flex-column">
+
+                <div class="container">
+                    <p class="display-6">Larkspur and Lilies</p>
+                    <p>Your one stop shop for all your flower needs</p>
+                    <button class="btn brown link-hover d-md-none" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navFooter" 
+                    aria-controls="navMenu" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                    <span class=""><i class="fa fa-bars" aria-hidden="true"></i>  Site Map</span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navFooter">
+                    <ul class="nav flex-column flex-md-row justify-content-between" >
+                        <li class="nav-item"><a href="/flowersFor/birthday" class="nav-link brown link-hover" >Birthday Flowers</a></li>
+                        <li class="nav-item"><a href="/flowersFor/anniversary" class="nav-link brown link-hover">Anniversary</a></li>
+                        <li class="nav-item"><a href="/flowersFor/best%20Sellers" class="nav-link brown link-hover">Best Sellers</a></li>
+                        <li class="nav-item"><a href="/flowersFor/sympathy" class="nav-link brown link-hover">Get Well Bouquets </a></li>
+                        <li class="nav-item"><a href="/flowersFor/congratulations" class="nav-link brown link-hover">Congratulations</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="container navbar-expand-md">
-                <ul class="navbar-nav mx-auto">
-                    <li><a class="nav-link" href="/flowersFor/birthday">Birthday Flowers</a></li>
-                    <li><a class="nav-link" href="/flowersFor/anniversary">Anniversary</a></li>
-                    <li><a class="nav-link" href="/flowersFor/BestSellers">Best Sellers</a></li>
-                    <li><a class="nav-link" href="/flowersFor/sympathy">Get Well Bouquets </a></li>
-                    <li><a class="nav-link" href="/flowersFor /congratulations">Congratulations</a></li>
-                </ul>
-            </div>
+            
         </nav>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
