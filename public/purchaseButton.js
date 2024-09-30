@@ -1,7 +1,7 @@
-let purchaseButton = document.querySelector(".purchaseButton")
+let checkoutButton = document.getElementById("checkout-btn")
 const stripe = Stripe("")
 
-purchaseButton.forEach(button => {
+checkoutButton.forEach(button => {
 
 button.addEventListener("click", function(){
 

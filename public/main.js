@@ -1,4 +1,4 @@
-// set up for button toggle in admin 
+// set up for button toggle in admin
 const openFormButton = document.querySelectorAll(".changeDiscountButton")
 
 openFormButton.forEach(function(el){
@@ -66,58 +66,29 @@ if (id in cart) {
 
 function updateCart() {
   document.getElementById("sum").textContent += sum;
-  document.getElementById("count").textContent += count; 
+  document.getElementById("count").textContent += count;
   console.log(sum, count)
   let tbody = document.getElementById("tbody");
-  
+
   for (let id in cart) {
     let item = cart[id];
-  
+
     let tr = document.createElement('tr')
-  
+
     let productTitle_td = document.createElement('td')
     productTitle_td.textContent = item.productTitle
     tr.appendChild(productTitle_td)
-  
-  
+
+
     let price_td = document.createElement("td");
     price_td.textContent = item.price;
     tr.appendChild(price_td);
-  
+
     let qty_td = document.createElement("td");
     qty_td.textContent = item.qty;
     tr.appendChild(qty_td);
-  
+
     tbody.appendChild(tr)
   }
 }
 updateCart()
-
-const sympathy_image_link = document.querySelector(".sympathy_image_class")
-const Best_Seller_Link = document.querySelector(".Best_Seller_image_class")
-const anniversary_image_link = document.querySelector(".anniversary_image_class")
-const birthday_image_link = document.querySelector(".birthday_image_class")
-const congratulations_link = document.querySelector(".congratulations_images_class")
-
-
-
-sympathy_image_link.addEventListener('click', () =>{
-  window.location.href = '/flowersFor/sympathy'
-})
-
-Best_Seller_Link.addEventListener('click',() =>{
-  window.location.href = '/flowersFor/best%20Sellers'
-})
-
-anniversary_image_link.addEventListener('click',() =>{
-  window.location.href = '/flowersFor/anniversary'
-})
-
-birthday_image_link.addEventListener('click',() =>{
-  window.location.href = '/flowersFor/birthday'
-})
-
-congratulations_link.addEventListener('click',() =>{
-  window.location.href ='/flowersFor/congratulations'
-})
-
