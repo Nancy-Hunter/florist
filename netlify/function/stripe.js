@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
         price_data: {
           currency: "usd",
           product_data: {
-            name: "T-shirt",
+            name: "Flower",
           },
           unit_amount: 2000,
         },
@@ -18,8 +18,8 @@ exports.handler = async (event, context) => {
       },
     ],
     mode: "payment",
-    success_url: "https://serverless-payments.netlify.app/success",
-    cancel_url: "https://serverless-payments.netlify.app/cancel",
+    success_url: "/success",
+    cancel_url: "/cancelled",
   });
   return {
     statusCode: 200,

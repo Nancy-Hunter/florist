@@ -7,8 +7,8 @@ body.grayscale {
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
-.hidden{
-	display: none;
+.hidden {
+  display: none;
 }
 .nav-background {
   background-color: #8cc9ab;

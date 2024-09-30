@@ -12,6 +12,7 @@ const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const adminRoutes = require("./routes/admin");
 
+
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
 
@@ -25,7 +26,7 @@ connectDB();
 app.set("view engine", "ejs");
 
 //Static Folder
-app.use(express.static("public"));
+app.use(express.static("./public"));
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
