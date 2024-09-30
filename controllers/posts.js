@@ -27,4 +27,13 @@ module.exports = {
       console.log(err);
     }
   },
+  getCart: async (req, res) => {
+    try {
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render("cart.ejs", { posts: posts });
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
+

@@ -1,7 +1,33 @@
 <%- include('partials/header') -%>
   <div class="container">
-    <p>cart stuff</p>
-    <button class="purchaseButton">Purchase Now</button>
-  </div>
+    <p class="text-center py-3 lead">Thanks for Shopping with Us!</p>
+    <div class="container">
+      
+      <table class="table">
+          <thead>
+              <tr>
+                  <th scope="col">Your Flowers</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Qty</th>
+              </tr>
+          </thead>
+          <tbody id="tbody">
+  
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row" colspan="1">Total</th>
+              <td id="sum"></td>
+              <td id="count"></td>
+            </tr>
+          </tfoot>
+      </table>
 
+      <div class="pt-3 pb-5 text-end">
+          <a href="/" class="btn btn-outline-success">Keep Shopping</a>
+          <a href="#" id="checkout-btn" class="btn btn-outline-success">Checkout</a>
+      </div>
+      
+  </div>
+  </div>  
 <%- include('partials/footer') -%>

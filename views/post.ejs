@@ -2,21 +2,20 @@
 <div class="container">
 
   <div class="row justify-content-center mt-5">
-    <div class="col-6">
-      <h2><%= post.title %></h2>
+    <div class="col-6 text-center d-flex flex-column">
+      <h2 class="display-6 text-start pb-1 brown"><%= post.title %></h2>
       <img class="img-fluid" src="<%= post.image%>" />
+      <a class="btn btn-outline-success my-4" href="/feed">Keep smelling the Flowers</a>
     </div>
 
-    <div class="col-3 mt-5">
-      <p><%= post.caption %></p>
+    <div class="col-4 mt-5 brown">
+      <p class="lead"><%= post.caption %></p>
       <p>$<%= post.price %></p>
       <% if(post.bloom.length>0) { %>
         <p>Includes: <%= post.bloom %> </p>
       <% } %>
-      <button class="btn btn-outline-success name="<%= post._id %>">Add to Cart</button>
-    </div>
-    <div class="col-6 my-5">
-      <a class="btn btn-outline-success" href="/feed">Keep smelling the Flowers</a>
+      <button class="btn btn-outline-success cartButton" data-id="<%= post._id %>" data-price="<%= post.price %>" data-title="<%= post.title %>">Add to Cart</button>
+      <a href= "/cart" class="btn btn-outline-success ">Checkout</a>
     </div>
   </div>
 
