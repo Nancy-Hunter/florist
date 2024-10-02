@@ -20,3 +20,9 @@ body.grayscale {
   text-decoration: none;
   color: #6f5e4f;
 }
+.cartImage {
+  width:5rem
+}
+td {
+  vertical-align: middle;
+}

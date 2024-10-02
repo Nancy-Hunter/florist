@@ -14,7 +14,7 @@
       <% if(post.bloom.length>0) { %>
         <p>Includes: <%= post.bloom %> </p>
       <% } %>
-      <button class="btn btn-outline-success cartButton" data-id="<%= post._id %>" data-price="<%= post.price %>" data-title="<%= post.title %>">Add to Cart</button>
+      <button class="btn btn-outline-success cartButton" data-id="<%= post._id %>" data-img="<%= post.image %>" data-price="<%= post.price %>" data-title="<%= post.title %>">Add to Cart</button>
       <a href= "/cart" class="btn btn-outline-success ">Checkout</a>
     </div>
   </div>
