@@ -72,17 +72,25 @@ function updateCart() {
   document.getElementById("sum").textContent += sum;
   document.getElementById("count").textContent += count; 
   let tbody = document.getElementById("tbody");
-  
+  if (Object.keys(cart).length === 0) {
+    let tr = document.createElement('tr')
+    let emptyCart= document.createElement('td');
+    emptyCart.textContent =`Your Cart is Currently Empty`
+    emptyCart.setAttribute('colspan', 4)
+    tr.appendChild(emptyCart)
+
+    tbody.appendChild(tr)
+  }
   for (let id in cart) {
     let item = cart[id];
-
+    console.log(id)
     let tr = document.createElement('tr')
     let img_td = document.createElement('td');
-    img_td.innerHTML =`<img src= '${item.image}' alt = 'bouquet' class='cartImage'>`
+    img_td.innerHTML =`<a href='/post/${id}'><img src= '${item.image}' alt = 'bouquet' class='cartImage'></a>`
     tr.appendChild(img_td)
     
     let productTitle_td = document.createElement('td')
-    productTitle_td.textContent = item.productTitle
+    productTitle_td.innerHTML = `<a href='/post/${id}' class='brown'>${item.productTitle}</a>`
     tr.appendChild(productTitle_td)
     
     
@@ -95,11 +103,11 @@ function updateCart() {
     tr.appendChild(qty_td);
     
     let editButton = document.createElement("td")
-    editButton.innerHTML = `<span data-id="${id}" class ="editCart"><i data-id="${id}" class = "editCart fas fa-pencil-alt px-2"></i>Edit</span>`
+    editButton.innerHTML = `<span data-id="${id}" class ="editCart"><i data-id="${id}" class = "editCart fas fa-pencil-alt px-2" aria-hidden="true"></i>Edit</span>`
     tr.appendChild(editButton)
     
     let deleteButton = document.createElement("td")
-    deleteButton.innerHTML = `<span data-id="${id}" class ="deleteCart"><i data-id="${id}" class="deleteCart fa fa-times px-2 "></i>Delete</span>`
+    deleteButton.innerHTML = `<span data-id="${id}" class ="deleteCart"><i data-id="${id}" class="deleteCart fa fa-times px-2 " aria-hidden="true"></i>Delete</span>`
     tr.appendChild(deleteButton)
     
     
