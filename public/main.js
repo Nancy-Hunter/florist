@@ -1,4 +1,4 @@
-// set up for button toggle in admin/profile page 
+// set up for button toggle in admin/profile page
 const openFormButton = document.querySelectorAll(".changeDiscountButton")
 
 openFormButton.forEach(function(el){
@@ -68,10 +68,11 @@ if (id in cart) {
 }
 
 //Updates table in checkout
-function updateCart() {   
+function updateCart() {
   document.getElementById("sum").textContent += sum;
-  document.getElementById("count").textContent += count; 
+  document.getElementById("count").textContent += count;
   let tbody = document.getElementById("tbody");
+
   if (Object.keys(cart).length === 0) {
     let tr = document.createElement('tr')
     let emptyCart= document.createElement('td');
@@ -81,9 +82,11 @@ function updateCart() {
 
     tbody.appendChild(tr)
   }
+
   for (let id in cart) {
     let item = cart[id];
     let tr = document.createElement('tr')
+
     let img_td = document.createElement('td');
     img_td.innerHTML =`<a href='/post/${id}'><img src= '${item.image}' alt = 'bouquet' class='cartImage'></a>`
     tr.appendChild(img_td)
@@ -91,8 +94,8 @@ function updateCart() {
     let productTitle_td = document.createElement('td')
     productTitle_td.innerHTML = `<a href='/post/${id}' class='brown'>${item.productTitle}</a>`
     tr.appendChild(productTitle_td)
-    
-    
+
+
     let price_td = document.createElement("td");
     price_td.textContent = item.price;
     tr.appendChild(price_td);
@@ -123,6 +126,7 @@ function updateCart() {
   }
 }
 updateCart()
+
 
 //Adds delete buttons in checkout page
 const deleteFromCartButton = document.querySelectorAll(".deleteCart")
@@ -196,4 +200,5 @@ birthday_image_link.addEventListener('click',() =>{
 congratulations_link.addEventListener('click',() =>{
   window.location.href ='/flowersFor/congratulations'
 })
+
 
