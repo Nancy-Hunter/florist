@@ -1,4 +1,4 @@
-// set up for button toggle in admin
+// set up for button toggle in admin/profile page
 const openFormButton = document.querySelectorAll(".changeDiscountButton")
 
 openFormButton.forEach(function(el){
@@ -29,7 +29,7 @@ if (localStorage.getItem("cart")) {
     cart = JSON.parse(localStorage.getItem("cart"));
 }
 
-//updateCart at post
+//update Cart in local storage at post.ejs
 
 const addToCartButton = document.querySelectorAll(".cartButton")
 
@@ -37,33 +37,37 @@ addToCartButton.forEach(function (el) {
   el.addEventListener('click', addToCart)
 })
 function addToCart(event) {
-  console.log('clicked')
-
   let price = Number(event.target.dataset.price);
   let productTitle = event.target.dataset.title;
   let id = event.target.dataset.id;
+  let image = event.target.dataset.img
 
 if (id in cart) {
   cart[id].qty++;
 } else {
   let cartItem = {
+      image : image,
       productTitle: productTitle,
       price: price,
       qty: 1
   };
   cart[id] = cartItem
 }
-
   count++;
   sum += price;
-
-  console.log(cart, sum, count);
 
   localStorage.setItem("cart", JSON.stringify(cart));
   localStorage.setItem("sum", sum)
   localStorage.setItem("count", count)
+  let shoppingCart = document.querySelector('.shopping-cart')
+  shoppingCart.classList.add('active');
+  shoppingCart.setAttribute('data-product-count', count)
+  setTimeout(() => {
+    shoppingCart.classList.remove('active');
+}, 1000)
 }
 
+//Updates table in checkout
 function updateCart() {
   document.getElementById("sum").textContent += sum;
   document.getElementById("count").textContent += count;
@@ -92,3 +96,31 @@ function updateCart() {
   }
 }
 updateCart()
+
+const sympathy_image_link = document.querySelector(".sympathy_image_class")
+const Best_Seller_Link = document.querySelector(".Best_Seller_image_class")
+const anniversary_image_link = document.querySelector(".anniversary_image_class")
+const birthday_image_link = document.querySelector(".birthday_image_class")
+const congratulations_link = document.querySelector(".congratulations_images_class")
+
+
+
+sympathy_image_link.addEventListener('click', () =>{
+  window.location.href = '/flowersFor/sympathy'
+})
+
+Best_Seller_Link.addEventListener('click',() =>{
+  window.location.href = '/flowersFor/best%20Sellers'
+})
+
+anniversary_image_link.addEventListener('click',() =>{
+  window.location.href = '/flowersFor/anniversary'
+})
+
+birthday_image_link.addEventListener('click',() =>{
+  window.location.href = '/flowersFor/birthday'
+})
+
+congratulations_link.addEventListener('click',() =>{
+  window.location.href ='/flowersFor/congratulations'
+})
