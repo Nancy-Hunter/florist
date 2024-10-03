@@ -83,7 +83,6 @@ function updateCart() {
   }
   for (let id in cart) {
     let item = cart[id];
-    console.log(id)
     let tr = document.createElement('tr')
     let img_td = document.createElement('td');
     img_td.innerHTML =`<a href='/post/${id}'><img src= '${item.image}' alt = 'bouquet' class='cartImage'></a>`
@@ -98,18 +97,27 @@ function updateCart() {
     price_td.textContent = item.price;
     tr.appendChild(price_td);
     
-    let qty_td = document.createElement("td");
-    qty_td.textContent = item.qty;
-    tr.appendChild(qty_td);
-    
     let editButton = document.createElement("td")
-    editButton.innerHTML = `<span data-id="${id}" class ="editCart"><i data-id="${id}" class = "editCart fas fa-pencil-alt px-2" aria-hidden="true"></i>Edit</span>`
+    editButton.innerHTML = `
+      <select class="p-2" data-id="${id}"
+          onchange="editFromCart(this, this.value)">
+        <option>${item.qty}</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>`
     tr.appendChild(editButton)
     
     let deleteButton = document.createElement("td")
     deleteButton.innerHTML = `<span data-id="${id}" class ="deleteCart"><i data-id="${id}" class="deleteCart fa fa-times px-2 " aria-hidden="true"></i>Delete</span>`
     tr.appendChild(deleteButton)
-    
     
     tbody.appendChild(tr)
   }
@@ -139,15 +147,25 @@ function deleteFromCart(event) {
   window.location.reload()
 }
 
-//Adds edit buttons in checkout page
-const editFromCartButton = document.querySelectorAll(".editCart")
-
-editFromCartButton.forEach(function (el) {
-  el.addEventListener('click', editFromCart)
-})
-function editFromCart(event) {
-  console.log('clicked edit button', event.target.dataset.title)
-}
+//edits quantity on cart checkout
+function editFromCart(selectObj, value) {
+   let cart = JSON.parse(localStorage.getItem("cart"))
+   let productID = selectObj.dataset.id
+   for (let id in cart) {
+     let item = cart[id]
+     if (id == productID) {    
+       sum -= item.qty * item.price
+       count -= item.qty
+       item.qty = value
+       sum += item.qty * item.price
+       count += item.qty
+     }
+   }
+   localStorage.setItem("sum", sum)
+   localStorage.setItem("count", count)
+   localStorage.setItem("cart", JSON.stringify(cart))
+   window.location.reload()
+ }
 
 
 //Image links from index to category pages
