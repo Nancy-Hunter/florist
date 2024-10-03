@@ -20,7 +20,11 @@ body {
 td {
   vertical-align: middle;
 }
-
+select {
+  border: none;
+  background-color: #d7e2de;
+  text-align: center;
+}
 
 /* add to cart animation */
 
