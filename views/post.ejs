@@ -10,7 +10,12 @@
 
     <div class="col-4 mt-5 brown">
       <p class="lead"><%= post.caption %></p>
-      <p>$<%= post.price %></p>
+      <% if (post.onSale==true) { %>
+        <p class="ps-3"><s>$<%= post.price %></s></p> 
+        <p class="ps-3 text-success">On Sale $<%= post.price - post.discount %></p>                   
+      <% } else { %>
+        <p class="ps-3">$<%= post.price %></p> 
+      <% } %>
       <% if(post.bloom.length>0) { %>
         <p>Includes: <%= post.bloom %> </p>
       <% } %>

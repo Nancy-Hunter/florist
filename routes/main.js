@@ -9,6 +9,7 @@ const purchaseStatusController = require("../controllers/purchase.js")
 //Main Routes - simplified for now
 router.get("/", homeController.getIndex)
 router.get("/flowersFor/:theme", postsController.getCategory)
+router.get("/deals", postsController.getDeals)
 router.get("/feed", postsController.getFeed)
 router.get("/cart", postsController.getCart)
 router.get("/success",purchaseStatusController.getTransactionSuccessful)
