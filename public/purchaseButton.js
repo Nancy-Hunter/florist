@@ -1,9 +1,11 @@
-let checkoutButton = document.getElementById("checkout-btn")
-const stripe = Stripe("")
+let checkoutButton = document.getElementById("checkout-btn");
 
-checkoutButton.forEach(button => {
+console.log("Checkout button:", checkoutButton);
 
-button.addEventListener("click", function(){
+const stripe = Stripe('pk_test_51Q5gWj2Kfq7u5iFagDAegD5EM9pXX19nRooAAZ8lPtmO9QqARK9gDm36gwrPtAQUtfrETOQrXCl0ZJFqLXyjUzVJ00Fq4PuVRI');
+
+checkoutButton.addEventListener("click", function(){
+
     fetch("/api/stripe",{
         method: "POST",
     })
@@ -24,5 +26,4 @@ button.addEventListener("click", function(){
     });
 
 
-    });
 });

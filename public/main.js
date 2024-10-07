@@ -90,7 +90,7 @@ function updateCart() {
     let img_td = document.createElement('td');
     img_td.innerHTML =`<a href='/post/${id}'><img src= '${item.image}' alt = 'bouquet' class='cartImage'></a>`
     tr.appendChild(img_td)
-    
+
     let productTitle_td = document.createElement('td')
     productTitle_td.innerHTML = `<a href='/post/${id}' class='brown'>${item.productTitle}</a>`
     tr.appendChild(productTitle_td)
@@ -99,7 +99,7 @@ function updateCart() {
     let price_td = document.createElement("td");
     price_td.textContent = item.price;
     tr.appendChild(price_td);
-    
+
     let editButton = document.createElement("td")
     editButton.innerHTML = `
       <select class="p-2" data-id="${id}"
@@ -117,11 +117,11 @@ function updateCart() {
         <option value="10">10</option>
     </select>`
     tr.appendChild(editButton)
-    
+
     let deleteButton = document.createElement("td")
     deleteButton.innerHTML = `<span data-id="${id}" class ="deleteCart"><i data-id="${id}" class="deleteCart fa fa-times px-2 " aria-hidden="true"></i>Delete</span>`
     tr.appendChild(deleteButton)
-    
+
     tbody.appendChild(tr)
   }
 }
@@ -139,7 +139,7 @@ function deleteFromCart(event) {
   let productID = event.target.dataset.id
   for (let id in cart) {
     let item = cart[id]
-    if (id == productID) {    
+    if (id == productID) {
       sum -= item.qty * item.price
       count -= item.qty
       delete cart[id]
@@ -157,7 +157,7 @@ function editFromCart(selectObj, value) {
    let productID = selectObj.dataset.id
    for (let id in cart) {
      let item = cart[id]
-     if (id == productID) {    
+     if (id == productID) {
        sum -= item.qty * item.price
        count -= item.qty
        item.qty = value
@@ -170,35 +170,3 @@ function editFromCart(selectObj, value) {
    localStorage.setItem("cart", JSON.stringify(cart))
    window.location.reload()
  }
-
-
-//Image links from index to category pages
-const sympathy_image_link = document.querySelector(".sympathy_image_class")
-const Best_Seller_Link = document.querySelector(".Best_Seller_image_class")
-const anniversary_image_link = document.querySelector(".anniversary_image_class")
-const birthday_image_link = document.querySelector(".birthday_image_class")
-const congratulations_link = document.querySelector(".congratulations_images_class")
-
-
-
-sympathy_image_link.addEventListener('click', () =>{
-  window.location.href = '/flowersFor/sympathy'
-})
-
-Best_Seller_Link.addEventListener('click',() =>{
-  window.location.href = '/flowersFor/best%20Sellers'
-})
-
-anniversary_image_link.addEventListener('click',() =>{
-  window.location.href = '/flowersFor/anniversary'
-})
-
-birthday_image_link.addEventListener('click',() =>{
-  window.location.href = '/flowersFor/birthday'
-})
-
-congratulations_link.addEventListener('click',() =>{
-  window.location.href ='/flowersFor/congratulations'
-})
-
-

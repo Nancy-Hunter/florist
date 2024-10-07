@@ -1,19 +1,25 @@
+
 <%- include('partials/header') -%>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+
+
   <div class="container">
     <p class="text-center py-3 lead">Thanks for Shopping with Us!</p>
     <div class="container">
-      
+
       <table class="table text-center">
           <thead>
               <tr>
                 <th scope="col">Description</th>
-                <th scope="col">Your Flowers</th>                
+                <th scope="col">Your Flowers</th>
                 <th scope="col">Price</th>
                 <th scope="col">Qty</th>
               </tr>
           </thead>
           <tbody id="tbody">
-  
+
           </tbody>
           <tfoot>
             <tr>
@@ -28,7 +34,9 @@
           <a href="/" class="btn btn-outline-success">Keep Shopping</a>
           <a href="#" id="checkout-btn" class="btn btn-outline-success">Checkout</a>
       </div>
-      
+
   </div>
-  </div>  
+  </div>
+
+  <script src="/purchasebutton.js"></script>
 <%- include('partials/footer') -%>
