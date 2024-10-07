@@ -41,7 +41,7 @@ module.exports = {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         [{ $set: { 
-            discount: { $toDouble: req.body.discountUpdate},
+            discount: { $toDecimal: req.body.discountUpdate},
             onSale: onSaleFlag
             } 
         }]

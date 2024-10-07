@@ -4,7 +4,6 @@ const stripe = Stripe("")
 checkoutButton.forEach(button => {
 
 button.addEventListener("click", function(){
-
     fetch("/api/stripe",{
         method: "POST",
     })

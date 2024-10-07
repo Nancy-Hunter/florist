@@ -14,7 +14,7 @@
             <form action="/admin/createPost" enctype="multipart/form-data" method="POST">
               <div class="mb-2">
                   <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
+                  <input type="text" required class="form-control" id="title" name="title">
               </div>
               <div class="mb-2">
                 <label for="caption" class="form-label">Caption</label>
@@ -22,7 +22,7 @@
               </div>
               <div class="mb-2">
                 <label for="price" class="form-label">Price</label>
-                <input type = "number" class="form-control" id="price" name="price">
+                <input type = "number" class="form-control" id="price" name="price" required min = '0.00' step= ".01">
               </div>
               <div class="mb-2">
                 <label for="category" class="form-label">Choose a Category:</label>
@@ -47,7 +47,7 @@
               </fieldset>
               <div>
                 <label for="discount" class="form-label">Discount</label>
-                <input type = "number" class="form-control" id="discount" name="discount" default = 0 placeholder='0.00'>
+                <input type = "number" class="form-control" id="discount" name="discount" value = '0.00' placeholder='0.00' min = '0.00' step= ".01">
               </div>
           
               <fieldset class="my-2">
