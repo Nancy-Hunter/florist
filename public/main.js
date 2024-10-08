@@ -22,7 +22,8 @@ if (localStorage.getItem("count")) {
 }
 
 if (localStorage.getItem("sum")) {
-    sum = parseInt(localStorage.getItem("sum"));
+    sum = +JSON.parse(localStorage.getItem("sum")).toFixed(2);
+    console.log(typeof sum)
 }
 
 if (localStorage.getItem("cart")) {
@@ -54,9 +55,10 @@ if (id in cart) {
   cart[id] = cartItem
 }
   count++;
-  sum += price;
+  sum += +price;
 
   localStorage.setItem("cart", JSON.stringify(cart));
+  console.log(sum)
   localStorage.setItem("sum", sum)
   localStorage.setItem("count", count)
   let shoppingCart = document.querySelector('.shopping-cart')
@@ -69,8 +71,9 @@ if (id in cart) {
 
 //Updates table in checkout
 function updateCart() {
-  document.getElementById("sum").textContent += sum;
-  document.getElementById("count").textContent += count;
+  console.log((sum).toFixed(2), typeof sum)
+  document.getElementById("sum").textContent = Number.parseFloat(sum).toFixed(2)
+  document.getElementById("count").textContent = count;
   let tbody = document.getElementById("tbody");
 
   if (Object.keys(cart).length === 0) {
@@ -97,24 +100,24 @@ function updateCart() {
 
 
     let price_td = document.createElement("td");
-    price_td.textContent = item.price;
+    price_td.textContent = Number.parseFloat(item.price).toFixed(2);
     tr.appendChild(price_td);
 
     let editButton = document.createElement("td")
     editButton.innerHTML = `
-      <select class="p-2" data-id="${id}"
-          onchange="editFromCart(this, this.value)">
+      <select class="p-2" name = 'editQTY' data-id="${id}"
+          onchange="editFromCart(this, +this.value)">
         <option>${item.qty}</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+        <option value=8>8</option>
+        <option value=9>9</option>
+        <option value=10>10</option>
     </select>`
     tr.appendChild(editButton)
 
@@ -140,8 +143,8 @@ function deleteFromCart(event) {
   for (let id in cart) {
     let item = cart[id]
     if (id == productID) {
-      sum -= item.qty * item.price
-      count -= item.qty
+      sum -= +item.qty * Number.parseFloat(item.price).toFixed(2)
+      count -= +item.qty
       delete cart[id]
     }
   }
@@ -158,10 +161,10 @@ function editFromCart(selectObj, value) {
    for (let id in cart) {
      let item = cart[id]
      if (id == productID) {
-       sum -= item.qty * item.price
+       sum -= item.qty * Number.parseFloat(item.price).toFixed(2)
        count -= item.qty
        item.qty = value
-       sum += item.qty * item.price
+       sum += item.qty * Number.parseFloat(item.price).toFixed(2)
        count += item.qty
      }
    }

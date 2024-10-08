@@ -165,7 +165,7 @@
                   class="">
                     <button class="fa fa-trash" type="submit"></button>
                 </form>
-                <!-- trash button moved from post.ejs -->
+                <!-- trash button -->
              </div>
             
             <div class="btn-group-sm">
@@ -189,7 +189,7 @@
               name ="onSaleForm"
               id ="onSaleForm">
                   <label for="discountUpdate" class="form-label">Enter Discount:</label>
-                  <input type="number" class="form-control" id="discountUpdate" name="discountUpdate">
+                  <input type="number" class="form-control" id="discountUpdate" name="discountUpdate" min = '0.00' step= ".01">
                   <button class="btn btn-success mt-1" id ='onSaleButton' type="submit">Update</button>
               </form> 
               <!-- add on sale button -->

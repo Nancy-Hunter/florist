@@ -12,10 +12,10 @@
                 <div class="d-flex">
                   <p><%= posts[i].caption %></p>
                   <% if (posts[i].onSale==true) { %>
-                    <p class="ps-3"><s>$<%= posts[i].price %></s></p> 
-                    <p class="ps-3 text-success">$<%= posts[i].price - posts[i].discount %></p>                   
+                    <p class="ps-3"><s>$<%=  Number.parseFloat(posts[i].price).toFixed(2) %></s></p> 
+                    <p class="ps-3 text-success">$<%=  Number.parseFloat(posts[i].price - posts[i].discount).toFixed(2) %></p>                   
                   <% } else { %>
-                    <p class="ps-3">$<%= posts[i].price %></p> 
+                    <p class="ps-3">$<%= Number.parseFloat(posts[i].price).toFixed(2) %></p> 
                   <% } %>
                 </div>
               </a>
