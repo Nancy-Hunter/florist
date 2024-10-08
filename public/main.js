@@ -69,7 +69,7 @@ if (id in cart) {
 
 //Updates table in checkout
 function updateCart() {
-  document.getElementById("sum").textContent = Number.parseFloat(sum).toFixed(2)
+  document.getElementById("sum").textContent = (Number.parseFloat(sum)+(Number.parseFloat(sum) * .045) - (Number.parseFloat(sum) * .15) + 10).toFixed(2)
   document.getElementById("count").textContent = count;
   let tbody = document.getElementById("tbody");
 
@@ -123,21 +123,41 @@ function updateCart() {
   
       tbody.appendChild(tr)
     }
+    
+    let space1 = document.createElement('td');
+    let space2 = document.createElement('td');
+    let space3 = document.createElement('td');
+    
     let taxesTR = document.createElement('tr')
     let shippingTR = document.createElement('tr')
     let discountTR = document.createElement('tr')
 
     let taxes = document.createElement('td');
-    taxes.textContent =`taxes?`
+    taxes.textContent =`Taxes 4.5%`
+    taxesTR.appendChild(space1)
     taxesTR.appendChild(taxes)
-
+    
+    let taxesValue = document.createElement('td');
+    taxesValue.textContent =`${(Number.parseFloat(sum).toFixed(2) * .045).toFixed(2)} `
+    taxesTR.appendChild(taxesValue)
+    
     let shipping = document.createElement('td');
-    shipping.textContent =`shipping?`
+    shipping.textContent =`Shipping and Handling`
+    shippingTR.appendChild(space2)
     shippingTR.appendChild(shipping)
 
+    let shippingValue = document.createElement('td');
+    shippingValue.textContent =`10.00`
+    shippingTR.appendChild(shippingValue)
+
     let discount = document.createElement('td');
-    discount.textContent =`discount?`
+    discount.textContent =`Discount 15% Off Today Only!`
+    discountTR.appendChild(space3)
     discountTR.appendChild(discount)
+
+    let discountValue = document.createElement('td');
+    discountValue.textContent =`-${(Number.parseFloat(sum).toFixed(2) * .15).toFixed(2)}`
+    discountTR.appendChild(discountValue)
 
     tbody.appendChild(taxesTR)
     tbody.appendChild(shippingTR)
