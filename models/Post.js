@@ -1,4 +1,4 @@
-const { Double } = require("mongodb");
+const { Double, Decimal128 } = require("mongodb");
 const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
@@ -11,7 +11,7 @@ const PostSchema = new mongoose.Schema({
     require: true,
   },
   price: {
-    type: Number,
+    type:  mongoose.Types.Decimal128,
     require: true,
   },
   category: {
@@ -30,8 +30,8 @@ const PostSchema = new mongoose.Schema({
     required: true,
   },
   discount: {
-    type: Number,
-    default: 0,
+    type:  mongoose.Types.Decimal128,
+    default:  mongoose.Types.Decimal128('0.00'),
   },
   cloudinaryId: {
     type: String,

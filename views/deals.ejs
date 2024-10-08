@@ -1,0 +1,29 @@
+<%- include('partials/header') -%>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+        <h1 class="display-3 brown">End of Season Flowers</h1>
+        <p>Last chance til next year for these beautiful blooms</p>
+        <ul class="row list-unstyled">
+            <% for(var i=0; i<posts.length; i++) {%>
+                <% if (posts[i].onSale==true) { %>
+                <li class="col-6 justify-content-between mt-5">
+                    <a class="brown link-hover text-decoration-none" href="/post/<%= posts[i]._id%>">
+                        <img class="img-fluid" src="<%= posts[i].image%>">
+                        <p class="display-6 brown"><%= posts[i].title %></p>
+                        <div class="d-flex">
+                            <p><%= posts[i].caption %></p>
+                            <% if (posts[i].onSale==true) { %>
+                                <p class="ps-3"><s>$<%= posts[i].price %></s></p> 
+                                <p class="ps-3 text-success">$<%= posts[i].price - posts[i].discount %></p>                   
+                            <% } else { %>
+                                <p class="ps-3">$<%= posts[i].price %></p> 
+                            <% } %>
+                        </div>
+                    </a>
+                </li>
+                <% } %>
+            <% } %>
+        </ul>
+    </div>
+  </div>  
+<%- include('partials/footer') -%>

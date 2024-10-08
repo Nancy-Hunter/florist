@@ -5,8 +5,15 @@ module.exports = {
   getCategory: async (req, res) => {
     try {
       const posts = await Post.find({ category: req.params.theme });
-      console.log(req.params.theme, posts);
       res.render("category.ejs", { posts: posts });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getDeals: async (req, res) => {
+    try {
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render("deals.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
     }

@@ -2,6 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 
 module.exports = {
+  // get request for admin profile page
   getProfile: async (req, res) => {
     try {
       const posts = await Post.find().sort({ category: "asc" });
@@ -10,6 +11,7 @@ module.exports = {
       console.log(err);
     }
   },
+  //creates document in MongoDB for product
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary
@@ -35,13 +37,14 @@ module.exports = {
       console.log(err);
     }
   },
+  //Updates product's discount/onsale boolean status
   onSale: async (req, res) => {
     try {
       let onSaleFlag = req.body.discountUpdate>0
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         [{ $set: { 
-            discount: { $toDouble: req.body.discountUpdate},
+            discount: { $toDecimal: Number.parseFloat(req.body.discountUpdate).toFixed(2)},
             onSale: onSaleFlag
             } 
         }]
@@ -52,6 +55,7 @@ module.exports = {
       console.log(err);
     }
   },
+  //updates available boolean status
   soldOut: async (req, res) => {
     try {
       await Post.findOneAndUpdate({ _id: req.params.id }, [
