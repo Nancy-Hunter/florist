@@ -63,3 +63,10 @@ custom sorting
 //     clicked.nextElementSibling.classList.toggle('show');
 //   }
 // }
+
+<!-- this can go in the ejs -->
+<script>
+  const test = '<%= posts[1].title %>'
+</script>
+<!-- and this can go in the client side JS to pass the variable from the database -->
+console.log(test, 'hi');

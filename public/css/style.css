@@ -25,6 +25,10 @@ select {
   background-color: #d7e2de;
   text-align: center;
 }
+.front {
+  background-color: #8cc9ab;
+  display: block;
+}
 
 /* add to cart animation */
 

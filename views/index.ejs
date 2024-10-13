@@ -9,12 +9,12 @@
     <%- include('partials/header') -%>
     <!---<div class="text-center d-flex" >
       <div class="text-center w-100"> -->
-        <div class="row">
+        <div class="row d-flex align-items-center">
           <div class="col-md-6">
             <div class="text-center d-flex" >
-              <div class="text-center w-100">
-        <h1>Welcome to Larkspur and Lilies!</h1>
-        <p>Feel free to purchase one of our beautiful flowers! </p>
+              <div class="text-center w-100 flex-grow-1 ms-3 ">
+        <h2 class ='display-2 brown'>Welcome to Larkspur and Lilies!</h1>
+        <p class ='brown'>Feel free to purchase one of our beautiful flowers! </p>
               </div>
             </div>
           </div>
@@ -23,44 +23,23 @@
       </div>
     </div>
     <main>
-        <div class="container">
-            <div class="row align-items-start">
-              <div class="col">
-              <a href="/flowersFor/birthday"><img class = "birthday_image_class img-fluid" src="imgs/mums.jpg" alt=""></a>
-              <a href="/flowersFor/birthday"><h2>Birthday Flowers</h2></a>
-              <span>A perfect gift for someone's special day</span>
-              </div>
-
-              <div class="col">
-                <a href="/flowersFor/best%20Sellers"><img class="Best_Seller_image_class img-fluid" src="imgs/tulips.jpg" alt="Tulips"></a>
-                <a href="/flowersFor/best%20Sellers"><h2>Best Sellers</h2></a>
-                <span>Our Best and Greatest</span>
-              </div>
-
-              <div class="col">
-                 <a href="/flowersFor/anniversary"><img class="anniversary_image_class img-fluid" src="imgs/zinnia.jpg" alt=""></a>
-                 <a href="/flowersFor/anniversary"><h2>Anniversary Flowers</h2></a>
-                 <span>Celebrate the journey with something special</span>
-              </div>
-
-
-              <div class="col">
-                <a href="/flowersFor/sympathy"><img class="sympathy_image_class img-fluid" src="imgs/roses.jpg" alt="Roses"></a>
-                <a href="/flowersFor/sympathy"><h2>Get Well Bouquets</h2></a>
-                <span>Get well</span>
-              </div>
-
-
-              <div class="col">
-                <a href="/flowersFor/congratulations"><img class="congratulations_images_class img-fluid" src="imgs/flowers.jpg" alt=""></a>
-                <a href="/flowersFor/congratulations"><h2>Congratulations Gift</h2></a>
-                <span>Celebrate your achievements with a floral present</span>
-              </div>
-            </div>
-
-
-            </div>
-        </div>
+      <ul class="row list-unstyled">
+        <% for(var i=0; i<posts.length; i++) {%>
+          <% if (i == 0 || posts[i].category != posts[i-1].category) { %>
+            <a href="/flowerFor/<%=posts[i].category%>" class=" front display-3 mt-4 brown link-hover"><%=posts[i].category[0].toUpperCase() + posts[i].category.slice(1) %> Flowers</a>
+          <% } %>
+          <!-- Start of list item -->
+          <li class="col-4 mt-3" id ="<%= posts[i].id %>" >
+            <a href="/post/<%= posts[i]._id%>">
+              <img class="card-img-top" src="<%= posts[i].image%>">
+            </a>
+            <!-- image and anchor -->
+             <div class="d-flex justify-content-between">
+                <h6 class=""><%=posts[i].title%></h6>
+                <!-- title -->
+          <% } %>
+      </ul>
+        
     </main>
 <%- include('partials/footer') -%>
 </body>

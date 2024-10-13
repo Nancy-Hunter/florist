@@ -1,7 +1,5 @@
 let checkoutButton = document.getElementById("checkout-btn");
 
-console.log(test);
-
 const stripe = Stripe('pk_test_51Q5gWj2Kfq7u5iFagDAegD5EM9pXX19nRooAAZ8lPtmO9QqARK9gDm36gwrPtAQUtfrETOQrXCl0ZJFqLXyjUzVJ00Fq4PuVRI');
 
 checkoutButton.addEventListener("click", function(){
