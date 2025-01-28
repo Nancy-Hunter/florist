@@ -29,6 +29,9 @@ select {
   background-color: #8cc9ab;
   display: block;
 }
+li {
+  list-style: none;
+}
 
 /* add to cart animation */
 
