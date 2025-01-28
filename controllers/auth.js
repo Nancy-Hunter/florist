@@ -20,11 +20,6 @@ exports.getResetPassword = (req, res) => {
   });
 };
 
-exports.resetPassword = (req, res) => {
-  console.log(req)
-  return res.redirect('/')
-}; // for unwritten password update
-
 exports.postLogin = (req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
