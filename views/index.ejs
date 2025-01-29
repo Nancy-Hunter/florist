@@ -23,23 +23,186 @@
       </div>
     </div>
     <main>
-      <section class = 'row justify-content-center'>
-        <% for(var i=0; i<posts.length; i++) {%>
-          <% if (i == 0 || posts[i].category != posts[i-1].category) { %>
-            <h3 class = 'front text-center display-4 mt-4 '>
-              <a href="/flowerFor/<%=posts[i].category%>" class="brown link-hover"><%=posts[i].category[0].toUpperCase() + posts[i].category.slice(1) %> Flowers</a>
-            </h3>
-          <% } %>
-            <!-- Start of list item -->
-          <div class="col-3 mt-4 mx-3" id ="<%= posts[i].id %>" >
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="card-img-top" src="<%= posts[i].image%>">
-            </a>
-            <h6 class="text-center"><%=posts[i].title%></h6>
-            <!-- title -->
+      <div class="text-center d-flex">
+        <div class="text-center w-100 front mt-4 brown link-hover">
+        <h2 class = "display-3">Flowers for Every Occasion</h2>
+      </div>
+      </div>
+        <div class="container">
+            <div class="row align-items-start">
+                <a href="/flowersFor/birthday" class=" front display-4 mt-4 brown link-hover">Birthday Flowers</a>
+                <span class = "display-6 brown">A perfect gift for someone's special day</span>
+
+            </div>
+
+              <ul class="row list-unstyled">
+                <% let count = 0; %>
+                <% for(var i=0; i<posts.length && count < 3; i++) {%>
+
+                  <% if(posts[i].category.includes('birthday')) { %>
+                    <!-- Start of list item -->
+                    <li class="col-4 mt-3" id ="<%= posts[i].id %>" >
+                      <a href="/post/<%= posts[i]._id%>">
+                        <img class="card-img-top" src="<%= posts[i].image%>">
+                      </a>
+                      <!-- image and anchor -->
+                       <div class="d-flex justify-content-between">
+                          <h6 class=""><%=posts[i].title%></h6>
+                       </div>
+                    </li>
+                    <% count++; %>
+                          <!-- title -->
+                      <% } %>
+                    <% } %>
+              </ul>
+
+              <div class="container text-center d-flex">
+                <div class="text-center w-100 front mt-4 brown link-hover">
+                <a class = "display-6 brown" href="/flowersFor/birthday">More Flowers Here</a>
+              </div>
+            </div>
+
+
+              <div class="container">
+                <div class="row align-items-start">
+                    <a href="/flowersFor/best%20Sellers" class=" front display-4 mt-4 brown link-hover">Best Sellers</a>
+                    <span class = "display-6 brown">Our Best and Greatest</span>
+                </div>
+
+
+              <ul class="row list-unstyled">
+                <% let count1 = 0; %>
+                <% for(var i=0; i<posts.length && count1 < 3; i++) {%>
+
+                  <% if(posts[i].category.includes('best Sellers')) { %>
+                    <!-- Start of list item -->
+                    <li class="col-4 mt-3" id ="<%= posts[i].id %>" >
+                      <a href="/post/<%= posts[i]._id%>">
+                        <img class="card-img-top" src="<%= posts[i].image%>">
+                      </a>
+                      <!-- image and anchor -->
+                       <div class="d-flex justify-content-between">
+                          <h6 class=""><%=posts[i].title%></h6>
+                       </div>
+                    </li>
+                    <% count1++; %>
+                          <!-- title -->
+                      <% } %>
+                    <% } %>
+              </ul>
+
+              <div class="container text-center d-flex">
+                <div class="text-center w-100 front mt-4 brown link-hover">
+                <a class="display-6 brown" href="/flowersFor/best%20Sellers">More Flowers Here</a>
+              </div>
+            </div>
+
+
+
+              <div class="container">
+                <div class="row align-items-start">
+                    <a href="/flowersFor/anniversary" class=" front display-4 mt-4 brown link-hover">Anniversary Flowers</a>
+                    <span class = "display-6 brown">Celebrate the journey with something special</span>
+                </div>
+
+              <ul class="row list-unstyled">
+                <% let count2 = 0; %>
+                <% for(var i=0; i<posts.length && count2 < 3; i++) {%>
+
+                  <% if(posts[i].category.includes('anniversary')) { %>
+                    <!-- Start of list item -->
+                    <li class="col-4 mt-3" id ="<%= posts[i].id %>" >
+                      <a href="/post/<%= posts[i]._id%>">
+                        <img class="card-img-top" src="<%= posts[i].image%>">
+                      </a>
+                      <!-- image and anchor -->
+                       <div class="d-flex justify-content-between">
+                          <h6 class=""><%=posts[i].title%></h6>
+                       </div>
+                    </li>
+                    <% count2++; %>
+                          <!-- title -->
+                      <% } %>
+                    <% } %>
+              </ul>
+
+              <div class="container text-center d-flex">
+                <div class="text-center w-100 front mt-4 brown link-hover">
+                <a class="display-6 brown" href="/flowersFor/anniversary">More Flowers Here</a>
+              </div>
+            </div>
+
+
+              <div class="container">
+                <div class="row align-items-start">
+                    <a href="/flowersFor/sympathy" class=" front display-4 mt-4 brown link-hover">Get Well Bouquets</a>
+                    <span class = "display-6 brown">Special Bouquets for those in need of being cheered up </span>
+                </div>
+
+              <ul class="row list-unstyled">
+                <% let count3 = 0; %>
+                <% for(var i=0; i<posts.length && count3 < 3; i++) {%>
+
+                  <% if(posts[i].category.includes('sympathy')) { %>
+                    <!-- Start of list item -->
+                    <li class="col-4 mt-3" id ="<%= posts[i].id %>" >
+                      <a href="/post/<%= posts[i]._id%>">
+                        <img class="card-img-top" src="<%= posts[i].image%>">
+                      </a>
+                      <!-- image and anchor -->
+                       <div class="d-flex justify-content-between">
+                          <h6 class=""><%=posts[i].title%></h6>
+                       </div>
+                    </li>
+                    <% count3++; %>
+                          <!-- title -->
+                      <% } %>
+                    <% } %>
+              </ul>
+
+              <div class="container text-center d-flex">
+                <div class="text-center w-100 front mt-4 brown link-hover">
+                <a class="display-6 brown" href="/flowersFor/sympathy">More Flowers Here</a>
+              </div>
+            </div>
+
+              <div class="container">
+                <div class="row align-items-start">
+                    <a href="/flowersFor/congratulations" class=" front display-4 mt-4 brown link-hover">Congratulations Flowers</a>
+                    <span class = "display-6 brown">Celebrate your achievements with a floral present</span>
+                </div>
+
+            <ul class="row list-unstyled">
+              <% let count4 = 0; %>
+              <% for(var i=0; i<posts.length && count4 < 3; i++) {%>
+
+                <% if(posts[i].category.includes('congratulations')) { %>
+                  <!-- Start of list item -->
+                  <li class="col-4 mt-3" id ="<%= posts[i].id %>" >
+                    <a href="/post/<%= posts[i]._id%>">
+                      <img class="card-img-top" src="<%= posts[i].image%>">
+                    </a>
+                    <!-- image and anchor -->
+                     <div class="d-flex justify-content-between">
+                        <h6 class=""><%=posts[i].title%></h6>
+                     </div>
+                  </li>
+                  <% count4++; %>
+                        <!-- title -->
+                    <% } %>
+                  <% } %>
+            </ul>
+
+          <div class="container text-center d-flex mb-2">
+            <div class="text-center w-100 front mt-4 brown link-hover">
+            <a class="display-6 brown" href="/flowersFor/congratulations">More Flowers Here</a>
           </div>
-        <% } %>
-      </section>
+        </div>
+
+
+
+        </div>
+
     </main>
 <%- include('partials/footer') -%>
 </body>
