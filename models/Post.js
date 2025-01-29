@@ -11,7 +11,7 @@ const PostSchema = new mongoose.Schema({
     require: true,
   },
   price: {
-    type:  mongoose.Types.Decimal128,
+    type: Number,
     require: true,
   },
   category: {
@@ -30,8 +30,8 @@ const PostSchema = new mongoose.Schema({
     required: true,
   },
   discount: {
-    type:  mongoose.Types.Decimal128,
-    default:  mongoose.Types.Decimal128('0.00'),
+    type:  Number,
+    default: 0,
   },
   cloudinaryId: {
     type: String,
