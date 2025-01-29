@@ -11,6 +11,15 @@ exports.getLogin = (req, res) => {
   });
 };
 
+exports.getResetPassword = (req, res) => {
+  if (req.user) {
+    return res.redirect("/admin/profile");
+  }
+  res.render("resetPassword", {
+    title: "Reset Password",
+  });
+};
+
 exports.postLogin = (req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))

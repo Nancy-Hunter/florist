@@ -7,6 +7,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Admin Routes 
 router.get("/login", authController.getLogin);
+router.get("/resetPassword", authController.getResetPassword);
+//router.post("resetPassword", authController.resetPassword);
 router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
