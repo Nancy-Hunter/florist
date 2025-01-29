@@ -1,7 +1,7 @@
 {
-  "name": "binary-upload-boom",
+  "name": "larkspur-and-lilies",
   "version": "1.0.0",
-  "description": "100Devs Social Network",
+  "description": "local florist website with moderator contact with database",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
@@ -21,7 +21,7 @@
     "express-session": "^1.17.1",
     "method-override": "^3.0.0",
     "mongodb": "^3.6.5",
-    "mongoose": "^5.12.3",
+    "mongoose": "^8.9.5",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^2.0.7",
