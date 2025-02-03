@@ -11,7 +11,7 @@ module.exports = {
       console.log(err);
     }
   },
-  //creates document in MongoDB for product
+  //creates document in MongoDB for product 
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary
