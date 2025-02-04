@@ -1,16 +1,17 @@
 const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
-const { promisify } = require("util");
 
-exports.getLogin = (req, res) => {
+exports.getLogin = async (req, res) => {
   if (req.user) {
     return res.redirect("/admin/profile");
   }
-  res.render("login.ejs");
+  res.render("login", {
+    title: "Login",
+  });
 };
 
-exports.getResetPassword = (req, res) => {
+exports.getResetPassword = async (req, res) => {
   if (req.user) {
     return res.redirect("/admin/profile");
   }
@@ -20,61 +21,51 @@ exports.getResetPassword = (req, res) => {
 };
 
 exports.postLogin = async (req, res, next) => {
-  try {
-    const validationErrors = [];
-    if (!validator.isEmail(req.body.email)) {
-      validationErrors.push({ msg: "Please enter a valid email address." });
-    }
-    if (validator.isEmpty(req.body.password)) {
-      validationErrors.push({ msg: "Password cannot be blank." });
-    }
-    if (validationErrors.length) {
-      req.flash("errors", validationErrors);
-      return res.redirect("/admin/login");
-    }
+  const validationErrors = [];
+  if (!validator.isEmail(req.body.email))
+    validationErrors.push({ msg: "Please enter a valid email address." });
+  if (validator.isEmpty(req.body.password))
+    validationErrors.push({ msg: "Password cannot be blank." });
 
-    req.body.email = validator.normalizeEmail(req.body.email, {
-      gmail_remove_dots: false,
-    });
+  if (validationErrors.length) {
+    req.flash("errors", validationErrors);
+    return res.redirect("/admin/login");
+  }
+  req.body.email = validator.normalizeEmail(req.body.email, {
+    gmail_remove_dots: false,
+  });
 
-    const authenticate = promisify(passport.authenticate("local"));
-    const user = await authenticate(req, res, next);
-
+  passport.authenticate("local", async (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
     if (!user) {
-      req.flash("errors", [{ msg: "Invalid email or password." }]);
+      req.flash("errors", info);
       return res.redirect("/admin/login");
     }
-
-    const logIn = promisify(req.logIn.bind(req));
-    await logIn(user);
-
-    req.flash("success", { msg: "Success! You are logged in." });
-    res.redirect(req.session.returnTo || "/admin/profile");
-  } catch (err) {
-    return next('hhii');
-  }
-};
-
-exports.logout = async (req, res, next) => {
-  try {
-    if (req.logout) {
-      const logout = promisify(req.logout.bind(req));
-      await logout();
-    }
-
-    req.session.destroy((err) => {
+    req.logIn(user, async (err) => {
       if (err) {
-        console.error("Error: Failed to destroy the session during logout.", err);
+        return next(err);
       }
-      req.user = null;
-      res.redirect("/");
+      req.flash("success", { msg: "Success! You are logged in." });
+      res.redirect(req.session.returnTo || "/admin/profile");
     });
-  } catch (err) {
-    return next(err);
-  }
+  })(req, res, next);
 };
 
-exports.getSignup = (req, res) => {
+exports.logout = async (req, res) => {
+  req.logout(() => {
+    console.log('User has logged out.')
+  })
+  req.session.destroy((err) => {
+    if (err)
+      console.log("Error : Failed to destroy the session during logout.", err);
+    req.user = null;
+    res.redirect("/");
+  });
+};
+
+exports.getSignup = async (req, res) => {
   if (req.user) {
     return res.redirect("/admin/profile");
   }
@@ -84,53 +75,45 @@ exports.getSignup = (req, res) => {
 };
 
 exports.postSignup = async (req, res, next) => {
-  try {
-    const validationErrors = [];
-    if (!validator.isEmail(req.body.email)) {
-      validationErrors.push({ msg: "Please enter a valid email address." });
-    }
-    if (!validator.isLength(req.body.password, { min: 8 })) {
-      validationErrors.push({
-        msg: "Password must be at least 8 characters long.",
-      });
-    }
-    if (req.body.password !== req.body.confirmPassword) {
-      validationErrors.push({ msg: "Passwords do not match." });
-    }
-
-    if (validationErrors.length) {
-      req.flash("errors", validationErrors);
-      return res.redirect("/admin/signup");
-    }
-
-    req.body.email = validator.normalizeEmail(req.body.email, {
-      gmail_remove_dots: false,
+  const validationErrors = [];
+  if (!validator.isEmail(req.body.email))
+    validationErrors.push({ msg: "Please enter a valid email address." });
+  if (!validator.isLength(req.body.password, { min: 8 }))
+    validationErrors.push({
+      msg: "Password must be at least 8 characters long",
     });
+  if (req.body.password !== req.body.confirmPassword)
+    validationErrors.push({ msg: "Passwords do not match" });
 
-    const existingUser = await User.findOne({
-      $or: [{ email: req.body.email }, { userName: req.body.userName }],
-    });
-
-    if (existingUser) {
-      req.flash("errors", {
-        msg: "Account with that email address or username already exists.",
-      });
-      return res.redirect("/admin/signup");
-    }
-
-    const user = new User({
-      userName: req.body.userName,
-      email: req.body.email,
-      password: req.body.password,
-    });
-
-    await user.save();
-
-    const logIn = promisify(req.logIn.bind(req));
-    await logIn(user);
-
-    res.redirect("/admin/profile");
-  } catch (err) {
-    return next(err);
+  if (validationErrors.length) {
+    req.flash("errors", validationErrors);
+    return res.redirect("../admin/signup");
   }
+  req.body.email = validator.normalizeEmail(req.body.email, {
+    gmail_remove_dots: false,
+  });
+
+  const user = new User({
+    userName: req.body.userName,
+    email: req.body.email,
+    password: req.body.password,
+  });
+
+  User.findOne(
+    { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
+    async (err, existingUser) => {
+      if (err) {
+        return next(err);
+      }
+      if (existingUser) {
+        req.flash("errors", {
+          msg: "Account with that email address or username already exists.",
+        });
+        return res.redirect("../signup");
+      }
+      await user.save();
+      await req.logIn(user);
+      res.redirect("/admin/profile");
+    }
+  );
 };
