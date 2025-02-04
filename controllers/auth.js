@@ -2,7 +2,7 @@ const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
 
-exports.getLogin = async (req, res) => {
+exports.getLogin = (req, res) => {
   if (req.user) {
     return res.redirect("/admin/profile");
   }
@@ -98,22 +98,26 @@ exports.postSignup = async (req, res, next) => {
     email: req.body.email,
     password: req.body.password,
   });
-
-  User.findOne(
-    { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
-    async (err, existingUser) => {
-      if (err) {
-        return next(err);
-      }
+  try {
+      const existingUser = await User.findOne({ $or: [{ email: req.body.email }, { userName: req.body.userName }] });
       if (existingUser) {
         req.flash("errors", {
           msg: "Account with that email address or username already exists.",
         });
-        return res.redirect("../signup");
+        return res.redirect("/admin/signup");
       }
       await user.save();
-      await req.logIn(user);
+      await new Promise((resolve, reject)=> {
+        req.logIn(user, (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
       res.redirect("/admin/profile");
-    }
-  );
+  } catch (err) {
+    next(err)
+  } 
 };
