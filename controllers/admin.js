@@ -74,10 +74,11 @@ module.exports = {
       // Delete image from cloudinary
       await cloudinary.uploader.destroy(post.cloudinaryId);
       // Delete post from db
-      await Post.remove({ _id: req.params.id });
+      await Post.deleteOne({ _id: req.params.id });
       console.log("Deleted Post");
       res.redirect("/admin/profile");
     } catch (err) {
+      console.log(err)
       res.redirect("/admin/profile");
     }
   },
